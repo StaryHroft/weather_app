@@ -1,0 +1,96 @@
+2026-01-12T20:37:44.615+03:00  INFO 14540 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 14540 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-12T20:37:44.618+03:00  INFO 14540 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-12T20:37:45.671+03:00  INFO 14540 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-12T20:37:45.700+03:00  INFO 14540 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 0 JPA repository interfaces.
+2026-01-12T20:37:46.358+03:00  INFO 14540 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8085 (http)
+2026-01-12T20:37:46.381+03:00  INFO 14540 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-12T20:37:46.382+03:00  INFO 14540 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-12T20:37:46.526+03:00  INFO 14540 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1841 ms
+2026-01-12T20:37:46.650+03:00  WARN 14540 --- [WeatherApp] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/jdbc/autoconfigure/DataSourceInitializationAutoConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/jdbc/autoconfigure/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to determine a suitable driver class
+2026-01-12T20:37:46.656+03:00  INFO 14540 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-12T20:37:46.671+03:00  INFO 14540 --- [WeatherApp] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-12T20:37:46.690+03:00 ERROR 14540 --- [WeatherApp] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2026-01-12T20:38:24.741+03:00  INFO 16660 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 16660 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-12T20:38:24.745+03:00  INFO 16660 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-12T20:38:25.657+03:00  INFO 16660 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-12T20:38:25.684+03:00  INFO 16660 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 0 JPA repository interfaces.
+2026-01-12T20:38:26.248+03:00  INFO 16660 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8085 (http)
+2026-01-12T20:38:26.264+03:00  INFO 16660 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-12T20:38:26.265+03:00  INFO 16660 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-12T20:38:26.358+03:00  INFO 16660 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1549 ms
+2026-01-12T20:38:26.451+03:00  WARN 16660 --- [WeatherApp] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/jdbc/autoconfigure/DataSourceInitializationAutoConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/jdbc/autoconfigure/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to determine a suitable driver class
+2026-01-12T20:38:26.456+03:00  INFO 16660 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-12T20:38:26.468+03:00  INFO 16660 --- [WeatherApp] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-12T20:38:26.483+03:00 ERROR 16660 --- [WeatherApp] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2026-01-12T20:38:44.968+03:00  INFO 1284 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 1284 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-12T20:38:44.972+03:00  INFO 1284 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-12T20:38:45.936+03:00  INFO 1284 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-12T20:38:45.964+03:00  INFO 1284 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 0 JPA repository interfaces.
+2026-01-12T20:38:46.528+03:00  INFO 1284 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-01-12T20:38:46.546+03:00  INFO 1284 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-12T20:38:46.546+03:00  INFO 1284 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-12T20:38:46.642+03:00  INFO 1284 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1603 ms
+2026-01-12T20:38:46.734+03:00  WARN 1284 --- [WeatherApp] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/jdbc/autoconfigure/DataSourceInitializationAutoConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/jdbc/autoconfigure/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to determine a suitable driver class
+2026-01-12T20:38:46.738+03:00  INFO 1284 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-12T20:38:46.750+03:00  INFO 1284 --- [WeatherApp] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-12T20:38:46.766+03:00 ERROR 1284 --- [WeatherApp] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
