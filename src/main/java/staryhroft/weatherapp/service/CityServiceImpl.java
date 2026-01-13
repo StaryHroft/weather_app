@@ -28,18 +28,29 @@ public class CityServiceImpl implements CityService{
                 .orElse(new City("Город не найден"));
     }
 
+
     @Override
-    public void create(String cityName, Float temperature) {
+    public void create(String temperature, String cityName ) {
+        this.CITIES.add(getCity(temperature, cityName));
+    }
+
+    private City getCity(String temperature, String cityName) {
         City city = new City();
+        long maxId = getMaxId();
+        city.setId(maxId + 1L);
+        city.setTemperature(Float.valueOf(temperature));
         city.setCityName(cityName);
-        city.setTemperature(temperature);
+        return city;
+    }
+
+    private long getMaxId() {
         long maxId = CITIES.stream()
                 .mapToLong(City::getId)
                 .max()
                 .orElse(0L);
-        city.setId(maxId + 1L);
-        this.CITIES.add(new City(cityName));
+        return maxId;
     }
+
 
     @Override
     public String deleteCity(String cityName) {

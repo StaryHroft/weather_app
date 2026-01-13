@@ -22,9 +22,10 @@ public class CityRestControllerV1 {
     public City getByCityName(@PathVariable String cityName){
         return citiesService.getByCityName(cityName);
     }
-    @GetMapping("/create/{cityName}")
-    public List<City> createAndGetAllCities(@PathVariable String cityName, Float temperature ){
-        citiesService.create(cityName, temperature);
+//  /create?temperature=value&cityName=value
+    @GetMapping(value = "/create", params = {"temperature", "cityName"})
+    public List<City> createAndGetAllCities(@RequestParam String temperature, @RequestParam String cityName){
+        citiesService.create(temperature, cityName);
         return citiesService.getAllCities();
     }
     @GetMapping("/delete/{cityName}")
