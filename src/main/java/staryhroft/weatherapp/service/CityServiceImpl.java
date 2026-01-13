@@ -3,6 +3,7 @@ package staryhroft.weatherapp.service;
 import org.springframework.stereotype.Service;
 import staryhroft.weatherapp.model.City;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -28,9 +29,16 @@ public class CityServiceImpl implements CityService{
     }
 
     @Override
-    public City create(City cityName) {
-        this.CITIES.add(cityName);
-        return cityName;
+    public void create(String cityName, Float temperature) {
+        City city = new City();
+        city.setCityName(cityName);
+        city.setTemperature(temperature);
+        long maxId = CITIES.stream()
+                .mapToLong(City::getId)
+                .max()
+                .orElse(0L);
+        city.setId(maxId + 1L);
+        this.CITIES.add(new City(cityName));
     }
 
     @Override
