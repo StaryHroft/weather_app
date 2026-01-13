@@ -1569,3 +1569,5 @@ This generated password is for development use only. Your security configuration
 2026-01-13T15:48:59.536+03:00  INFO 236 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2026-01-13T15:48:59.536+03:00  INFO 236 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2026-01-13T15:48:59.537+03:00  INFO 236 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-13T16:13:34.097+03:00  INFO 236 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-13T16:13:34.117+03:00  INFO 236 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
