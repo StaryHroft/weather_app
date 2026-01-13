@@ -1,5 +1,6 @@
 package staryhroft.weatherapp.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,14 +8,23 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "weather_in_cities")
 public class City {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Float temperature;
+
+    @Column(name = "city", nullable = false, length = 50, unique = true)
     private String cityName;
+
+    @Column(name = "temp", nullable = false)
+    private Float temperature;
+
     private String errorMessage;
 
-    public City(Long id, Float temperature, String cityName) {
-        this.id = id;
+    public City(Float temperature, String cityName) {
         this.temperature = temperature;
         this.cityName = cityName;
     }
