@@ -1550,3 +1550,22 @@ This generated password is for development use only. Your security configuration
 2026-01-13T13:46:19.517+03:00  INFO 7648 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
 2026-01-13T15:26:16.887+03:00  INFO 7648 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
 2026-01-13T15:26:16.937+03:00  INFO 7648 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-13T15:48:31.099+03:00  INFO 236 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 236 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-13T15:48:31.103+03:00  INFO 236 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-13T15:48:32.468+03:00  INFO 236 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-13T15:48:32.487+03:00  INFO 236 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-13T15:48:32.487+03:00  INFO 236 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-13T15:48:32.572+03:00  INFO 236 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1398 ms
+2026-01-13T15:48:32.733+03:00  INFO 236 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-13T15:48:33.023+03:00  WARN 236 --- [WeatherApp] [main] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 8daf9831-3e7c-4026-8768-4e01ef165952
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-01-13T15:48:33.075+03:00  INFO 236 --- [WeatherApp] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-01-13T15:48:33.307+03:00  INFO 236 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-13T15:48:33.316+03:00  INFO 236 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 3.077 seconds (process running for 5.213)
+2026-01-13T15:48:59.536+03:00  INFO 236 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-13T15:48:59.536+03:00  INFO 236 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-13T15:48:59.537+03:00  INFO 236 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
