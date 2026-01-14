@@ -2,21 +2,38 @@ package staryhroft.weatherapp.service;
 
 import staryhroft.weatherapp.model.City;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface CityService {
-    // Создать таблицу
-    void createTable();
-    // Показать все города из таблицы
-    List<City> getAllCities();
-    //Показать город по названию
-    City getCityByName(String cityName);
-    //Проверить наличие города в списке
-    boolean cityExists(String cityName);
-    // Добавление города
-    void addCity(String cityName, Float temperature);
-    //Удаление города
-    void deleteCityByName(String cityName);
 
-    //void addCityIfNotExists(String cityName, Float temperature);
+    //Получить все города из БД
+    List<City> getAllCities();
+
+    // Найти город по названию
+    City getCityByName(String name);
+
+    //Добавить новый город
+    City addCity(City city);
+
+    //Удалить город по названию
+    void deleteCity(String name);
+
+    //Проверить, существует ли город с указанным названием
+    boolean existsByName(String name);
+
+    //Получить общее количество городов в базе
+    long countCities();
+
+    //Получить город с максимальной температурой
+    City getWarmestCity();
+
+    //Получить город с минимальной температурой
+    City getColdestCity();
+
+    //Получить среднюю температуру по всем городам
+    BigDecimal getAverageTemperature();
+
+    //Удалить все города из базы данных
+    void deleteAllCities();
 }

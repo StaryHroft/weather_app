@@ -1,36 +1,39 @@
 package staryhroft.weatherapp.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+import java.math.BigDecimal;
+
 @Entity
-@Table(name = "weather_in_cities")
+@Table(name = "cities")
 public class City {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "city", nullable = false, length = 50, unique = true)
-    private String cityName;
+    @NotEmpty(message = "Имя не должно быть пустым")
+    @Size(min = 2, max = 50, message = "Имя должно быть от 2 до 50 символов")
+    @Column(name = "city_name", nullable = false, length = 50)
+    private String name;
 
-    @Column(name = "temp", nullable = false)
-    private Float temperature;
+    @Column(name = "temperature", precision = 4, scale = 1)
+    private BigDecimal temperature;
 
-    private String errorMessage;
+    public City() {}
 
-    public City(String cityName, Float temperature) {
-        this.cityName = cityName;
+    public City(String name, BigDecimal temperature) {
+        this.name = name;
         this.temperature = temperature;
-
     }
 
-    public City(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public BigDecimal getTemperature() { return temperature; }
+    public void setTemperature(BigDecimal temperature) { this.temperature = temperature; }
 }

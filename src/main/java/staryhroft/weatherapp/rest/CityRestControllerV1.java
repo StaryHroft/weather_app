@@ -1,77 +1,264 @@
 package staryhroft.weatherapp.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import staryhroft.weatherapp.model.City;
 import staryhroft.weatherapp.service.CityService;
 
+import java.math.BigDecimal;
 import java.util.List;
+
 @RestController
 @RequestMapping("/cities")
 public class CityRestControllerV1 {
-//    private final CityService cityService;
-//
-//    public CityRestControllerV1(CityService cityService) {
-//        this.cityService = cityService;
-//    }
-    // Создать таблицу
-//    @PostMapping("/create")
-//    public ResponseEntity<String> makeTable() {
-//        cityService.createTable();
-//        return ResponseEntity.ok("Таблица создана");
-//    }
-    // Показать все города из таблицы
+
+    private final CityService cityService;
+
+    @Autowired
+    public CityRestControllerV1(CityService cityService) {
+        this.cityService = cityService;
+    }
+
+    /**
+     * Получить все города
+     * GET /cities
+     */
     @GetMapping
-    public String getCities() {
+    public ResponseEntity<List<City>> getAllCities() {
         List<City> cities = cityService.getAllCities();
         return ResponseEntity.ok(cities);
     }
-    //Показать город по названию
-    @GetMapping("/{cityName}")
-    public Object getCity(@PathVariable String cityName) {
-        City city = cityService.getCityByName(cityName);
 
-        if (city == null) {
-            return "Город " + cityName + " не найден";
+    /**
+     * Получить город по названию
+     * GET /cities/{name}
+     */
+    @GetMapping("/{name}")
+    public ResponseEntity<City> getCityByName(@PathVariable String name) {
+        try {
+            City city = cityService.getCityByName(name);
+            return ResponseEntity.ok(city);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
         }
-        return city;
     }
-    //Проверить наличие города в списке
-    @GetMapping("/exists/{city}")
-    public ResponseEntity<Boolean> checkCity(@PathVariable String cityName) {
-        boolean exists = cityService.cityExists(cityName);
+
+    /**
+     * Добавить город через JSON
+     * POST /cities
+     */
+    @PostMapping
+    public ResponseEntity<?> addCity(@RequestBody City city) {
+        try {
+            City createdCity = cityService.addCity(city);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdCity);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    /**
+     * Альтернативный способ добавления через параметры
+     * POST /cities/add?name=Moscow&temp=15.5
+     */
+    @PostMapping("/add")
+    public ResponseEntity<?> addCityWithParams(
+            @RequestParam String name,
+            @RequestParam BigDecimal temp) {
+
+        City city = new City();
+        city.setName(name);
+        city.setTemperature(temp);
+
+        try {
+            City createdCity = cityService.addCity(city);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdCity);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+
+
+    /**
+     * Удалить город по названию
+     * DELETE /cities/{name}
+     */
+    @DeleteMapping("/{name}")
+    public ResponseEntity<?> deleteCity(@PathVariable String name) {
+        try {
+            cityService.deleteCity(name);
+            return ResponseEntity.noContent().build(); // 204 No Content
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build(); // 404 Not Found
+        }
+    }
+
+    /**
+     * Проверить существование города
+     * GET /cities/exists/{name}
+     */
+    @GetMapping("/exists/{name}")
+    public ResponseEntity<Boolean> existsByName(@PathVariable String name) {
+        boolean exists = cityService.existsByName(name);
         return ResponseEntity.ok(exists);
     }
 
-    @PostMapping(value = "/add", params = {"cityName", "temperature"})
-    public ResponseEntity<String> addCity(@RequestParam String cityName,
-                                          @RequestParam Float temperature) {
-        cityService.addCity(cityName, temperature);
-        return ResponseEntity.ok("Операция завершена");
-    }
-    @DeleteMapping("/api/cities/delete/{cityName}")
-    public ResponseEntity<String> deleteCity(@PathVariable String cityName) {
-        cityService.deleteCityByName(cityName);
-        return ResponseEntity.ok("Город удален");
+    /**
+     * Получить количество городов
+     * GET /cities/count
+     */
+    @GetMapping("/count")
+    public ResponseEntity<Long> countCities() {
+        long count = cityService.countCities();
+        return ResponseEntity.ok(count);
     }
 
-//
+    /**
+     * Получить самый теплый город
+     * GET /cities/warmest
+     */
+    @GetMapping("/warmest")
+    public ResponseEntity<City> getWarmestCity() {
+        try {
+            City city = cityService.getWarmestCity();
+            return ResponseEntity.ok(city);
+        } catch (RuntimeException e) {
+            return ResponseEntity.noContent().build(); // 204 если нет городов
+        }
+    }
 
+    /**
+     * Получить самый холодный город
+     * GET /cities/coldest
+     */
+    @GetMapping("/coldest")
+    public ResponseEntity<City> getColdestCity() {
+        try {
+            City city = cityService.getColdestCity();
+            return ResponseEntity.ok(city);
+        } catch (RuntimeException e) {
+            return ResponseEntity.noContent().build(); // 204 если нет городов
+        }
+    }
+
+    /**
+     * Получить среднюю температуру
+     * GET /cities/average-temperature
+     */
+    @GetMapping("/average-temperature")
+    public ResponseEntity<BigDecimal> getAverageTemperature() {
+        try {
+            BigDecimal average = cityService.getAverageTemperature();
+            return ResponseEntity.ok(average);
+        } catch (RuntimeException e) {
+            return ResponseEntity.noContent().build(); // 204 если нет городов
+        }
+    }
+
+    /**
+     * Удалить все города
+     * DELETE /cities
+     */
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAllCities() {
+        try {
+            cityService.deleteAllCities();
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//@RestController
+//@RequestMapping("/cities")
+//public class CityRestControllerV1 {
+//    private final CityRepositoryImpl cityRepository;
 //
-////  /create?temperature=value&cityName=value
-//    @GetMapping(value = "/create", params = {"temperature", "cityName"})
-//    public List<City> createAndGetAllCities(@RequestParam String temperature, @RequestParam String cityName){
-//        citiesService.create(temperature, cityName);
-//        return citiesService.getAllCities();
+//    @Autowired
+//    public CityRestControllerV1(CityRepositoryImpl cityRepository) {
+//        this.cityRepository = cityRepository;
+//    }
+//     //Создать таблицу
+//    @PostMapping("/create")
+//    public ResponseEntity<String> makeTable() {
+//        cityRepository.createTable();
+//        return ResponseEntity.ok("Таблица создана");
 //    }
 //
+//    // Показать все города из таблицы
+//    @GetMapping
+//    public ResponseEntity<List<City>> getCities() {
+//        return ResponseEntity.ok(cityRepository.getCities());
+//    }
+//
+//    //Показать город по названию
+//    @GetMapping("/{name}")
+//    public ResponseEntity<City> getCity(@PathVariable String name) {
+//        City city = cityRepository.getCity(name);
+//        if (city == null) {
+//            return ResponseEntity.notFound().build(); // 404
+//        }
+//        return ResponseEntity.ok(city); // 200 OK с телом
+//    }
+//
+//    //Добавить город
+//    @PostMapping("/add")
+//    public ResponseEntity<?> addCity(@RequestParam String name,
+//                                     @RequestParam Float temp) {
+//        City city = new City();
+//        city.setName(name);
+//        city.setTemp(temp);
+//
+//        cityRepository.addCity(city);
+//        return ResponseEntity.ok("Город '" + name + "' успешно добавлен");
+//    }
+//
+//    //Удалить город
+//    @DeleteMapping("/delete")
+//    public ResponseEntity<String> deleteCity(@RequestParam String name) {
+//        cityRepository.deleteCity(name);
+//        return ResponseEntity.ok("Город удален");
+//    }
+//}
 
-}
-//
-//
-//
+//    //Проверить наличие города в списке
+//    @GetMapping("/exists/{city}")
+//    public ResponseEntity<Boolean> checkCity(@PathVariable String cityName) {
+//        boolean exists = cityService.cityExists(cityName);
+//        return ResponseEntity.ok(exists);
+//    }
 
 //
 
