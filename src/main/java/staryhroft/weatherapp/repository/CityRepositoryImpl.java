@@ -1,194 +1,89 @@
 package staryhroft.weatherapp.repository;
 
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import staryhroft.weatherapp.model.City;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
-public class CityRepositoryImpl implements CityRepository{
+@Repository
+public class CityRepositoryImpl implements CityRepository {
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    // Создание таблицы
+    @Transactional
     @Override
-    public Optional<City> findByCity(String city) {
-        return Optional.empty();
+    public void createTable() {
+        String sql = """
+                CREATE TABLE IF NOT EXISTS weather_in_cities (
+                    id BIGSERIAL PRIMARY KEY,
+                    city VARCHAR(100) NOT NULL UNIQUE,
+                    temp DECIMAL(5,2) NOT NULL
+                    )
+                """;
+        entityManager.createNativeQuery(sql).executeUpdate();
+        System.out.println("Таблица 'weather_in_cities' создана");
     }
-
+    // Показать все города из таблицы
     @Override
-    public List<City> findByTemperatureBetween(Double minTemp, Double maxTemp) {
-        return List.of();
+    public List<City> getAllCities() {
+        String sql = "SELECT * FROM weather_in_cities ORDER BY city";
+        Query query = entityManager.createNativeQuery(sql, City.class);
+        return query.getResultList();
     }
-
+    //Показать город по названию
     @Override
-    public List<City> findAllByOrderByTemperatureAsc() {
-        return List.of();
+    public City getCityByName(String cityName) {
+        try {
+            String sql = "SELECT * FROM weather_in_cities WHERE city = ?";
+            Query query = entityManager.createNativeQuery(sql, City.class);
+            query.setParameter(1, cityName);
+            return (City) query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Город '" + cityName + "' не найден в базе данных");
+            return null;
+        }
     }
-
+    // Проверка есть ли такой горол
     @Override
-    public List<City> findAllByOrderByTemperatureDesc() {
-        return List.of();
+    @Transactional(readOnly = true)
+    public boolean existsByCity(String cityName) {
+        if (cityName == null || cityName.isEmpty()) {
+            return false;
+        }
+        String sql = """
+                SELECT EXISTS(
+                    SELECT 1 FROM weather_in_cities
+                    WHERE city = ?
+                    LIMIT 1
+                )
+                """;
+
+        Query query = entityManager.createNativeQuery(sql);
+        query.setParameter(1, cityName);
+
+        Boolean exists = (Boolean) query.getSingleResult();
+        return Boolean.TRUE.equals(exists);
     }
-
+    // Добавление города
+    @Transactional
     @Override
-    public void deleteByCity(String city) {
-
+    public void addCityToTable(City city) {
+        entityManager.persist(city);//hibernate
+        System.out.println("Город " + city.getCityName() + " добавлен с ID: " + city.getId() + " в таблицу 'weather_in_cities'");
     }
-
+    //Удаление города
+    @Transactional
     @Override
-    public boolean existsByCity(String city) {
-        return false;
-    }
+    public void deleteCityByName(String cityName) {
+        String sql = "DELETE FROM weather_in_cities WHERE city = ?";
 
-    @Override
-    public void flush() {
-
-    }
-
-    @Override
-    public <S extends City> S saveAndFlush(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends City> List<S> saveAllAndFlush(Iterable<S> entities) {
-        return List.of();
-    }
-
-    @Override
-    public void deleteAllInBatch(Iterable<City> entities) {
-
-    }
-
-    @Override
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public City getOne(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public City getById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public City getReferenceById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public <S extends City> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
-    }
-
-    @Override
-    public <S extends City> List<S> findAll(Example<S> example) {
-        return List.of();
-    }
-
-    @Override
-    public <S extends City> List<S> findAll(Example<S> example, Sort sort) {
-        return List.of();
-    }
-
-    @Override
-    public <S extends City> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public <S extends City> long count(Example<S> example) {
-        return 0;
-    }
-
-    @Override
-    public <S extends City> boolean exists(Example<S> example) {
-        return false;
-    }
-
-    @Override
-    public <S extends City, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-        return null;
-    }
-
-    @Override
-    public <S extends City> S save(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends City> List<S> saveAll(Iterable<S> entities) {
-        return List.of();
-    }
-
-    @Override
-    public Optional<City> findById(Long aLong) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Long aLong) {
-        return false;
-    }
-
-    @Override
-    public List<City> findAll() {
-        return List.of();
-    }
-
-    @Override
-    public List<City> findAllById(Iterable<Long> longs) {
-        return List.of();
-    }
-
-    @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void deleteById(Long aLong) {
-
-    }
-
-    @Override
-    public void delete(City entity) {
-
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends City> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public List<City> findAll(Sort sort) {
-        return List.of();
-    }
-
-    @Override
-    public Page<City> findAll(Pageable pageable) {
-        return null;
+        Query query = entityManager.createNativeQuery(sql);
+        query.setParameter(1, cityName);
+        query.executeUpdate();
     }
 }

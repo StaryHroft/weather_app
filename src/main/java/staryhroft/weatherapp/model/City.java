@@ -24,9 +24,10 @@ public class City {
 
     private String errorMessage;
 
-    public City(Float temperature, String cityName) {
-        this.temperature = temperature;
+    public City(String cityName, Float temperature) {
         this.cityName = cityName;
+        this.temperature = temperature;
+
     }
 
     public City(String errorMessage) {

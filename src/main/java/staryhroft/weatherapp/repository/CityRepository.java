@@ -7,17 +7,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CityRepository extends JpaRepository<City, Long> {
+public interface CityRepository {
 
-    Optional<City> findByCity(String city);
-
-    List<City> findByTemperatureBetween(Double minTemp, Double maxTemp);
-
-    List<City> findAllByOrderByTemperatureAsc();  // от холодных к теплым
-
-    List<City> findAllByOrderByTemperatureDesc(); // от теплых к холодным
-
-    void deleteByCity(String city);
-
-    boolean existsByCity(String city);
+// Создать таблицу
+    void createTable();
+// Показать все города из таблицы
+    List<City> getAllCities();
+// Показать город по названию
+    City getCityByName(String cityName);
+// Проверить есть ли город в таблице
+    boolean existsByCity(String cityName);
+// Добавить в таблицу город
+    void addCityToTable(City city);
+// Удалить город из таблицы
+    void deleteCityByName(String cityName);
 }
