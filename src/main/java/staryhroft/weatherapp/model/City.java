@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     @NotEmpty(message = "Имя не должно быть пустым")

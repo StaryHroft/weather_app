@@ -218,3 +218,851 @@
 2026-01-15T02:32:31.397+03:00  INFO 11072 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
 2026-01-15T02:32:31.403+03:00  INFO 11072 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
 2026-01-15T02:32:31.407+03:00  INFO 11072 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T07:37:10.313+03:00  INFO 8996 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 8996 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T07:37:10.318+03:00  INFO 8996 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T07:37:11.143+03:00  INFO 8996 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T07:37:11.211+03:00  INFO 8996 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 1 JPA repository interface.
+2026-01-15T07:37:11.707+03:00  INFO 8996 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T07:37:11.724+03:00  INFO 8996 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T07:37:11.724+03:00  INFO 8996 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T07:37:11.806+03:00  INFO 8996 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1425 ms
+2026-01-15T07:37:12.016+03:00  INFO 8996 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T07:37:12.099+03:00  INFO 8996 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T07:37:12.762+03:00  INFO 8996 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T07:37:12.805+03:00  INFO 8996 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T07:37:12.942+03:00  INFO 8996 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@347b370c
+2026-01-15T07:37:12.943+03:00  INFO 8996 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T07:37:13.015+03:00  WARN 8996 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T07:37:13.052+03:00  INFO 8996 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T07:37:14.283+03:00  INFO 8996 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T07:37:14.377+03:00  INFO 8996 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T07:37:14.484+03:00  INFO 8996 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T07:37:14.807+03:00  WARN 8996 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T07:37:14.831+03:00  INFO 8996 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T07:37:15.214+03:00  INFO 8996 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T07:37:15.221+03:00  INFO 8996 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 5.496 seconds (process running for 6.633)
+2026-01-15T07:38:03.165+03:00  INFO 8996 --- [WeatherApp] [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T07:38:03.165+03:00  INFO 8996 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T07:38:03.167+03:00  INFO 8996 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-01-15T07:52:56.053+03:00  INFO 8996 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T07:52:56.060+03:00  INFO 8996 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T07:52:56.068+03:00  INFO 8996 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T07:52:56.071+03:00  INFO 8996 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T07:52:56.086+03:00  INFO 8996 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T07:53:35.105+03:00  INFO 11060 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 11060 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T07:53:35.108+03:00  INFO 11060 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T07:53:35.816+03:00  INFO 11060 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T07:53:35.873+03:00  INFO 11060 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 JPA repository interface.
+2026-01-15T07:53:36.294+03:00  INFO 11060 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T07:53:36.307+03:00  INFO 11060 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T07:53:36.307+03:00  INFO 11060 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T07:53:36.390+03:00  INFO 11060 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1228 ms
+2026-01-15T07:53:36.552+03:00  INFO 11060 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T07:53:36.603+03:00  INFO 11060 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T07:53:37.091+03:00  INFO 11060 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T07:53:37.125+03:00  INFO 11060 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T07:53:37.229+03:00  INFO 11060 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43fe2008
+2026-01-15T07:53:37.231+03:00  INFO 11060 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T07:53:37.267+03:00  WARN 11060 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T07:53:37.297+03:00  INFO 11060 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T07:53:38.365+03:00  INFO 11060 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T07:53:38.427+03:00  INFO 11060 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T07:53:38.546+03:00  INFO 11060 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T07:53:38.894+03:00  WARN 11060 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T07:53:38.915+03:00  INFO 11060 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T07:53:39.284+03:00  INFO 11060 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T07:53:39.289+03:00  INFO 11060 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.646 seconds (process running for 5.424)
+2026-01-15T07:53:48.176+03:00  INFO 11060 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T07:53:48.176+03:00  INFO 11060 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T07:53:48.177+03:00  INFO 11060 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T08:00:41.443+03:00  INFO 11060 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T08:00:41.450+03:00  INFO 11060 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T08:00:41.454+03:00  INFO 11060 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:00:41.457+03:00  INFO 11060 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T08:00:41.477+03:00  INFO 11060 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T08:00:46.671+03:00  INFO 9972 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 9972 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T08:00:46.674+03:00  INFO 9972 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T08:00:47.384+03:00  INFO 9972 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T08:00:47.439+03:00  INFO 9972 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interface.
+2026-01-15T08:00:47.910+03:00  INFO 9972 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T08:00:47.924+03:00  INFO 9972 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T08:00:47.925+03:00  INFO 9972 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T08:00:47.998+03:00  INFO 9972 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1269 ms
+2026-01-15T08:00:48.169+03:00  INFO 9972 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T08:00:48.222+03:00  INFO 9972 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T08:00:48.730+03:00  INFO 9972 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T08:00:48.764+03:00  INFO 9972 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T08:00:48.871+03:00  INFO 9972 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@552bee2f
+2026-01-15T08:00:48.872+03:00  INFO 9972 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T08:00:48.910+03:00  WARN 9972 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T08:00:48.940+03:00  INFO 9972 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T08:00:50.008+03:00  INFO 9972 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T08:00:50.074+03:00  INFO 9972 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:00:50.166+03:00  INFO 9972 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T08:00:50.440+03:00  WARN 9972 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T08:00:50.459+03:00  INFO 9972 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T08:00:50.798+03:00  INFO 9972 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T08:00:50.804+03:00  INFO 9972 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.617 seconds (process running for 5.386)
+2026-01-15T08:01:01.820+03:00  INFO 9972 --- [WeatherApp] [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T08:01:01.821+03:00  INFO 9972 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T08:01:01.822+03:00  INFO 9972 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T08:03:34.546+03:00  INFO 9972 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T08:03:34.560+03:00  INFO 9972 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T08:03:34.571+03:00  INFO 9972 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:03:34.575+03:00  INFO 9972 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T08:03:34.593+03:00  INFO 9972 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T08:03:37.764+03:00  INFO 8140 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 8140 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T08:03:37.767+03:00  INFO 8140 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T08:03:38.529+03:00  INFO 8140 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T08:03:38.602+03:00  INFO 8140 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 1 JPA repository interface.
+2026-01-15T08:03:39.082+03:00  INFO 8140 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T08:03:39.096+03:00  INFO 8140 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T08:03:39.097+03:00  INFO 8140 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T08:03:39.172+03:00  INFO 8140 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1348 ms
+2026-01-15T08:03:39.332+03:00  INFO 8140 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T08:03:39.385+03:00  INFO 8140 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T08:03:39.874+03:00  INFO 8140 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T08:03:39.909+03:00  INFO 8140 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T08:03:40.020+03:00  INFO 8140 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1fc3df43
+2026-01-15T08:03:40.022+03:00  INFO 8140 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T08:03:40.057+03:00  WARN 8140 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T08:03:40.089+03:00  INFO 8140 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T08:03:41.156+03:00  INFO 8140 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T08:03:41.242+03:00  INFO 8140 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:03:41.332+03:00  INFO 8140 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T08:03:41.640+03:00  WARN 8140 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T08:03:41.658+03:00  INFO 8140 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T08:03:41.996+03:00  INFO 8140 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T08:03:42.002+03:00  INFO 8140 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.695 seconds (process running for 5.541)
+2026-01-15T08:03:48.334+03:00  INFO 8140 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T08:03:48.334+03:00  INFO 8140 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T08:03:48.335+03:00  INFO 8140 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T08:04:33.732+03:00  INFO 8140 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T08:04:33.738+03:00  INFO 8140 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T08:04:33.743+03:00  INFO 8140 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:04:33.745+03:00  INFO 8140 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T08:04:33.762+03:00  INFO 8140 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T08:04:36.403+03:00  INFO 10572 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 10572 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T08:04:36.407+03:00  INFO 10572 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T08:04:37.096+03:00  INFO 10572 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T08:04:37.151+03:00  INFO 10572 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interface.
+2026-01-15T08:04:37.580+03:00  INFO 10572 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T08:04:37.604+03:00  INFO 10572 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T08:04:37.604+03:00  INFO 10572 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T08:04:37.675+03:00  INFO 10572 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1215 ms
+2026-01-15T08:04:37.843+03:00  INFO 10572 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T08:04:37.896+03:00  INFO 10572 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T08:04:38.388+03:00  INFO 10572 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T08:04:38.421+03:00  INFO 10572 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T08:04:38.523+03:00  INFO 10572 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3620eab
+2026-01-15T08:04:38.524+03:00  INFO 10572 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T08:04:38.559+03:00  WARN 10572 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T08:04:38.588+03:00  INFO 10572 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T08:04:39.637+03:00  INFO 10572 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T08:04:39.699+03:00  INFO 10572 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:04:39.792+03:00  INFO 10572 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T08:04:40.066+03:00  WARN 10572 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T08:04:40.084+03:00  INFO 10572 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T08:04:40.423+03:00  INFO 10572 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T08:04:40.428+03:00  INFO 10572 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.505 seconds (process running for 5.287)
+2026-01-15T08:21:47.531+03:00  INFO 10572 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T08:21:47.538+03:00  INFO 10572 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T08:21:47.542+03:00  INFO 10572 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:21:47.545+03:00  INFO 10572 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T08:21:47.558+03:00  INFO 10572 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T08:21:52.398+03:00  INFO 964 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 964 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T08:21:52.401+03:00  INFO 964 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T08:21:53.114+03:00  INFO 964 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T08:21:53.174+03:00  INFO 964 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interface.
+2026-01-15T08:21:53.600+03:00  INFO 964 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T08:21:53.614+03:00  INFO 964 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T08:21:53.614+03:00  INFO 964 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T08:21:53.699+03:00  INFO 964 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1245 ms
+2026-01-15T08:21:53.863+03:00  INFO 964 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T08:21:53.916+03:00  INFO 964 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T08:21:54.419+03:00  INFO 964 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T08:21:54.453+03:00  INFO 964 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T08:21:54.558+03:00  INFO 964 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6a543e09
+2026-01-15T08:21:54.559+03:00  INFO 964 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T08:21:54.595+03:00  WARN 964 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T08:21:54.622+03:00  INFO 964 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T08:21:55.671+03:00  INFO 964 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T08:21:55.734+03:00  INFO 964 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:21:55.821+03:00  INFO 964 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T08:21:56.102+03:00  WARN 964 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T08:21:56.121+03:00  INFO 964 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T08:21:56.461+03:00  INFO 964 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T08:21:56.467+03:00  INFO 964 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.585 seconds (process running for 5.38)
+2026-01-15T08:27:42.447+03:00  INFO 964 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T08:27:42.452+03:00  INFO 964 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T08:27:42.457+03:00  INFO 964 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:27:42.460+03:00  INFO 964 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T08:27:42.475+03:00  INFO 964 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T08:27:45.159+03:00  INFO 12972 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 12972 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T08:27:45.162+03:00  INFO 12972 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T08:27:45.858+03:00  INFO 12972 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T08:27:45.914+03:00  INFO 12972 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interface.
+2026-01-15T08:27:46.345+03:00  INFO 12972 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T08:27:46.359+03:00  INFO 12972 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T08:27:46.359+03:00  INFO 12972 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T08:27:46.432+03:00  INFO 12972 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1218 ms
+2026-01-15T08:27:46.604+03:00  INFO 12972 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T08:27:46.655+03:00  INFO 12972 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T08:27:47.144+03:00  INFO 12972 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T08:27:47.177+03:00  INFO 12972 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T08:27:47.279+03:00  INFO 12972 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6cc56b32
+2026-01-15T08:27:47.280+03:00  INFO 12972 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T08:27:47.315+03:00  WARN 12972 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T08:27:47.342+03:00  INFO 12972 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T08:27:48.389+03:00  INFO 12972 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T08:27:48.453+03:00  INFO 12972 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:27:48.546+03:00  INFO 12972 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T08:27:48.840+03:00  WARN 12972 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T08:27:48.858+03:00  INFO 12972 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T08:27:49.190+03:00  INFO 12972 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T08:27:49.196+03:00  INFO 12972 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.495 seconds (process running for 5.296)
+2026-01-15T08:34:16.349+03:00  INFO 12972 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T08:34:16.355+03:00  INFO 12972 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T08:34:16.361+03:00  INFO 12972 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:34:16.366+03:00  INFO 12972 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T08:34:16.378+03:00  INFO 12972 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T08:34:19.094+03:00  INFO 1280 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 1280 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T08:34:19.097+03:00  INFO 1280 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T08:34:19.796+03:00  INFO 1280 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T08:34:19.852+03:00  INFO 1280 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 JPA repository interface.
+2026-01-15T08:34:20.278+03:00  INFO 1280 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T08:34:20.291+03:00  INFO 1280 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T08:34:20.292+03:00  INFO 1280 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T08:34:20.365+03:00  INFO 1280 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1209 ms
+2026-01-15T08:34:20.526+03:00  INFO 1280 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T08:34:20.580+03:00  INFO 1280 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T08:34:21.072+03:00  INFO 1280 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T08:34:21.105+03:00  INFO 1280 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T08:34:21.206+03:00  INFO 1280 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5d297d4d
+2026-01-15T08:34:21.208+03:00  INFO 1280 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T08:34:21.243+03:00  WARN 1280 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T08:34:21.271+03:00  INFO 1280 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T08:34:22.312+03:00  INFO 1280 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T08:34:22.368+03:00  INFO 1280 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:34:22.455+03:00  INFO 1280 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T08:34:22.810+03:00  WARN 1280 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T08:34:22.831+03:00  INFO 1280 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T08:34:23.185+03:00  INFO 1280 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T08:34:23.190+03:00  INFO 1280 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.561 seconds (process running for 5.313)
+2026-01-15T08:41:19.937+03:00  INFO 1280 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T08:41:19.945+03:00  INFO 1280 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T08:41:19.950+03:00  INFO 1280 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:41:19.953+03:00  INFO 1280 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T08:41:19.964+03:00  INFO 1280 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T08:41:25.931+03:00  INFO 15332 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 15332 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T08:41:25.935+03:00  INFO 15332 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T08:41:26.686+03:00  INFO 15332 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T08:41:26.754+03:00  INFO 15332 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 1 JPA repository interface.
+2026-01-15T08:41:27.203+03:00  INFO 15332 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T08:41:27.230+03:00  INFO 15332 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T08:41:27.231+03:00  INFO 15332 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T08:41:27.304+03:00  INFO 15332 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1313 ms
+2026-01-15T08:41:27.459+03:00  INFO 15332 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T08:41:27.512+03:00  INFO 15332 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T08:41:28.010+03:00  INFO 15332 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T08:41:28.043+03:00  INFO 15332 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T08:41:28.144+03:00  INFO 15332 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@57fce8b
+2026-01-15T08:41:28.146+03:00  INFO 15332 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T08:41:28.180+03:00  WARN 15332 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T08:41:28.209+03:00  INFO 15332 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T08:41:29.300+03:00  INFO 15332 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T08:41:29.370+03:00  INFO 15332 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:41:29.462+03:00  INFO 15332 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T08:41:29.737+03:00  WARN 15332 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T08:41:29.758+03:00  INFO 15332 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T08:41:30.093+03:00  INFO 15332 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T08:41:30.099+03:00  INFO 15332 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.704 seconds (process running for 5.517)
+2026-01-15T08:41:44.431+03:00  INFO 15332 --- [WeatherApp] [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T08:41:44.431+03:00  INFO 15332 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T08:41:44.432+03:00  INFO 15332 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T08:56:12.691+03:00  INFO 15332 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T08:56:12.697+03:00  INFO 15332 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T08:56:12.702+03:00  INFO 15332 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:56:12.705+03:00  INFO 15332 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T08:56:12.714+03:00  INFO 15332 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T08:56:18.221+03:00  INFO 15164 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 15164 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T08:56:18.225+03:00  INFO 15164 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T08:56:18.942+03:00  INFO 15164 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T08:56:19.005+03:00  INFO 15164 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 1 JPA repository interface.
+2026-01-15T08:56:19.437+03:00  INFO 15164 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T08:56:19.462+03:00  INFO 15164 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T08:56:19.462+03:00  INFO 15164 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T08:56:19.537+03:00  INFO 15164 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1259 ms
+2026-01-15T08:56:19.704+03:00  INFO 15164 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T08:56:19.757+03:00  INFO 15164 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T08:56:20.264+03:00  INFO 15164 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T08:56:20.298+03:00  INFO 15164 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T08:56:20.401+03:00  INFO 15164 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5e7cd0df
+2026-01-15T08:56:20.403+03:00  INFO 15164 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T08:56:20.438+03:00  WARN 15164 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T08:56:20.467+03:00  INFO 15164 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T08:56:21.513+03:00  INFO 15164 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T08:56:21.578+03:00  INFO 15164 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T08:56:21.666+03:00  INFO 15164 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T08:56:21.941+03:00  WARN 15164 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T08:56:21.960+03:00  INFO 15164 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T08:56:22.313+03:00  INFO 15164 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T08:56:22.319+03:00  INFO 15164 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.587 seconds (process running for 5.392)
+2026-01-15T08:56:31.683+03:00  INFO 15164 --- [WeatherApp] [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T08:56:31.684+03:00  INFO 15164 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T08:56:31.685+03:00  INFO 15164 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T09:01:53.097+03:00  INFO 15164 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T09:01:53.103+03:00  INFO 15164 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T09:01:53.107+03:00  INFO 15164 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:01:53.110+03:00  INFO 15164 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T09:01:53.120+03:00  INFO 15164 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T09:01:59.195+03:00  INFO 14244 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 14244 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T09:01:59.199+03:00  INFO 14244 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T09:01:59.989+03:00  INFO 14244 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T09:02:00.059+03:00  INFO 14244 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interface.
+2026-01-15T09:02:00.521+03:00  INFO 14244 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T09:02:00.548+03:00  INFO 14244 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T09:02:00.548+03:00  INFO 14244 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T09:02:00.623+03:00  INFO 14244 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1372 ms
+2026-01-15T09:02:00.790+03:00  INFO 14244 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T09:02:00.843+03:00  INFO 14244 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T09:02:01.339+03:00  INFO 14244 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T09:02:01.372+03:00  INFO 14244 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T09:02:01.475+03:00  INFO 14244 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6fa2a006
+2026-01-15T09:02:01.477+03:00  INFO 14244 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T09:02:01.513+03:00  WARN 14244 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T09:02:01.541+03:00  INFO 14244 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T09:02:02.623+03:00  INFO 14244 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T09:02:02.685+03:00  INFO 14244 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:02:02.774+03:00  INFO 14244 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T09:02:03.019+03:00  INFO 14244 --- [WeatherApp] [main] s.weatherapp.rest.CityRestControllerV1   : CityRestControllerV1 initialized!
+2026-01-15T09:02:03.050+03:00  WARN 14244 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T09:02:03.072+03:00  INFO 14244 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T09:02:03.418+03:00  INFO 14244 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T09:02:03.423+03:00  INFO 14244 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.72 seconds (process running for 5.537)
+2026-01-15T09:09:19.317+03:00  INFO 14244 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T09:09:19.323+03:00  INFO 14244 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T09:09:19.327+03:00  INFO 14244 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:09:19.330+03:00  INFO 14244 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T09:09:19.340+03:00  INFO 14244 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T09:09:25.069+03:00  INFO 11560 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 11560 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T09:09:25.072+03:00  INFO 11560 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T09:09:25.811+03:00  INFO 11560 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T09:09:25.868+03:00  INFO 11560 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 JPA repository interface.
+2026-01-15T09:09:26.286+03:00  INFO 11560 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T09:09:26.309+03:00  INFO 11560 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T09:09:26.310+03:00  INFO 11560 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T09:09:26.384+03:00  INFO 11560 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1260 ms
+2026-01-15T09:09:26.556+03:00  INFO 11560 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T09:09:26.608+03:00  INFO 11560 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T09:09:27.096+03:00  INFO 11560 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T09:09:27.130+03:00  INFO 11560 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T09:09:27.235+03:00  INFO 11560 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4ab9d160
+2026-01-15T09:09:27.237+03:00  INFO 11560 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T09:09:27.272+03:00  WARN 11560 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T09:09:27.301+03:00  INFO 11560 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T09:09:28.336+03:00  INFO 11560 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T09:09:28.399+03:00  INFO 11560 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:09:28.487+03:00  INFO 11560 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T09:09:28.811+03:00  WARN 11560 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T09:09:28.831+03:00  INFO 11560 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T09:09:29.228+03:00  INFO 11560 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T09:09:29.234+03:00  INFO 11560 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.65 seconds (process running for 5.394)
+2026-01-15T09:09:47.703+03:00  INFO 11560 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T09:09:47.703+03:00  INFO 11560 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T09:09:47.704+03:00  INFO 11560 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T09:10:15.221+03:00  INFO 11560 --- [WeatherApp] [http-nio-8082-exec-3] s.weatherapp.rest.CityRestControllerV1   : GET /cities/test вызван
+2026-01-15T09:12:36.201+03:00  INFO 11560 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T09:12:36.206+03:00  INFO 11560 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T09:12:36.211+03:00  INFO 11560 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:12:36.214+03:00  INFO 11560 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T09:12:36.226+03:00  INFO 11560 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T09:12:39.442+03:00  INFO 11320 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 11320 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T09:12:39.446+03:00  INFO 11320 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T09:12:40.187+03:00  INFO 11320 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T09:12:40.249+03:00  INFO 11320 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 1 JPA repository interface.
+2026-01-15T09:12:40.684+03:00  INFO 11320 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T09:12:40.697+03:00  INFO 11320 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T09:12:40.698+03:00  INFO 11320 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T09:12:40.785+03:00  INFO 11320 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1285 ms
+2026-01-15T09:12:40.963+03:00  INFO 11320 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T09:12:41.020+03:00  INFO 11320 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T09:12:41.532+03:00  INFO 11320 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T09:12:41.566+03:00  INFO 11320 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T09:12:41.667+03:00  INFO 11320 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@39695803
+2026-01-15T09:12:41.669+03:00  INFO 11320 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T09:12:41.705+03:00  WARN 11320 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T09:12:41.735+03:00  INFO 11320 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T09:12:42.785+03:00  INFO 11320 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T09:12:42.846+03:00  INFO 11320 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:12:42.931+03:00  INFO 11320 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T09:12:43.233+03:00  WARN 11320 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T09:12:43.259+03:00  INFO 11320 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T09:12:43.587+03:00  INFO 11320 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T09:12:43.593+03:00  INFO 11320 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.655 seconds (process running for 5.5)
+2026-01-15T09:13:22.392+03:00  INFO 11320 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T09:13:22.392+03:00  INFO 11320 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T09:13:22.393+03:00  INFO 11320 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T09:17:09.149+03:00  INFO 11320 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T09:17:09.154+03:00  INFO 11320 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T09:17:09.159+03:00  INFO 11320 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:17:09.162+03:00  INFO 11320 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T09:17:09.177+03:00  INFO 11320 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T09:17:14.953+03:00  INFO 10656 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 10656 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T09:17:14.957+03:00  INFO 10656 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T09:17:15.656+03:00  INFO 10656 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T09:17:15.711+03:00  INFO 10656 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interface.
+2026-01-15T09:17:16.130+03:00  INFO 10656 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T09:17:16.143+03:00  INFO 10656 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T09:17:16.144+03:00  INFO 10656 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T09:17:16.226+03:00  INFO 10656 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1217 ms
+2026-01-15T09:17:16.391+03:00  INFO 10656 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T09:17:16.443+03:00  INFO 10656 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T09:17:16.935+03:00  INFO 10656 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T09:17:16.971+03:00  INFO 10656 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T09:17:17.073+03:00  INFO 10656 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@54d60fa1
+2026-01-15T09:17:17.075+03:00  INFO 10656 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T09:17:17.110+03:00  WARN 10656 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T09:17:17.139+03:00  INFO 10656 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T09:17:18.199+03:00  INFO 10656 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T09:17:18.264+03:00  INFO 10656 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:17:18.351+03:00  INFO 10656 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T09:17:18.629+03:00  WARN 10656 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T09:17:18.648+03:00  INFO 10656 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T09:17:18.995+03:00  INFO 10656 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T09:17:19.001+03:00  INFO 10656 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.519 seconds (process running for 5.28)
+2026-01-15T09:17:41.639+03:00  INFO 10656 --- [WeatherApp] [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T09:17:41.640+03:00  INFO 10656 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T09:17:41.641+03:00  INFO 10656 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T09:22:52.199+03:00  INFO 10656 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T09:22:52.205+03:00  INFO 10656 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T09:22:52.210+03:00  INFO 10656 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:22:52.212+03:00  INFO 10656 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T09:22:52.221+03:00  INFO 10656 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T09:22:55.017+03:00  INFO 11736 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 11736 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T09:22:55.020+03:00  INFO 11736 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T09:22:55.750+03:00  INFO 11736 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T09:22:55.810+03:00  INFO 11736 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 1 JPA repository interface.
+2026-01-15T09:22:56.247+03:00  INFO 11736 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T09:22:56.261+03:00  INFO 11736 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T09:22:56.262+03:00  INFO 11736 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T09:22:56.352+03:00  INFO 11736 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1277 ms
+2026-01-15T09:22:56.526+03:00  INFO 11736 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T09:22:56.576+03:00  INFO 11736 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T09:22:57.083+03:00  INFO 11736 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T09:22:57.121+03:00  INFO 11736 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T09:22:57.233+03:00  INFO 11736 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@54d60fa1
+2026-01-15T09:22:57.234+03:00  INFO 11736 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T09:22:57.271+03:00  WARN 11736 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T09:22:57.303+03:00  INFO 11736 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T09:22:58.601+03:00  INFO 11736 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T09:22:58.714+03:00  INFO 11736 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T09:22:58.817+03:00  INFO 11736 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T09:22:59.092+03:00  WARN 11736 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T09:22:59.111+03:00  INFO 11736 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T09:22:59.454+03:00  INFO 11736 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T09:22:59.459+03:00  INFO 11736 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.914 seconds (process running for 5.656)
+2026-01-15T09:23:05.769+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T09:23:05.769+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T09:23:05.770+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T09:34:42.960+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-3] s.weatherapp.rest.CityRestControllerV1   : POST /cities/add вызван с параметрами: name=Pinsk, temp=22
+2026-01-15T09:34:43.004+03:00  WARN 11736 --- [WeatherApp] [http-nio-8082-exec-3] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 0, SQLState: 23505
+2026-01-15T09:34:43.005+03:00  WARN 11736 --- [WeatherApp] [http-nio-8082-exec-3] org.hibernate.orm.jdbc.error             : ERROR: duplicate key value violates unique constraint "cities_pkey"
+  Подробности: Key (id)=(1) already exists.
+2026-01-15T09:34:43.015+03:00 ERROR 11736 --- [WeatherApp] [http-nio-8082-exec-3] s.weatherapp.rest.CityRestControllerV1   : Ошибка при создании города: could not execute statement [ERROR: duplicate key value violates unique constraint "cities_pkey"
+  Подробности: Key (id)=(1) already exists.] [insert into cities (city_name,temperature) values (?,?)]; SQL [insert into cities (city_name,temperature) values (?,?)]; constraint [cities_pkey]
+2026-01-15T09:36:47.784+03:00  WARN 11736 --- [WeatherApp] [http-nio-8082-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2026-01-15T09:38:22.714+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-8] s.weatherapp.rest.CityRestControllerV1   : POST /cities/add вызван с параметрами: name=Pinsk, temp=-10
+2026-01-15T09:38:22.729+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-8] s.weatherapp.rest.CityRestControllerV1   : Город создан: ID=2, name=Pinsk
+2026-01-15T09:39:02.377+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-10] s.weatherapp.rest.CityRestControllerV1   : POST /cities/add вызван с параметрами: name=Minsk, temp=-15
+2026-01-15T09:39:02.381+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-10] s.weatherapp.rest.CityRestControllerV1   : Город создан: ID=3, name=Minsk
+2026-01-15T09:39:27.448+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-1] s.weatherapp.rest.CityRestControllerV1   : POST /cities/add вызван с параметрами: name=Kursk, temp=-12
+2026-01-15T09:39:27.452+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-1] s.weatherapp.rest.CityRestControllerV1   : Город создан: ID=4, name=Kursk
+2026-01-15T09:39:48.251+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-2] s.weatherapp.rest.CityRestControllerV1   : POST /cities/add вызван с параметрами: name=Bryansk, temp=-16
+2026-01-15T09:39:48.255+03:00  INFO 11736 --- [WeatherApp] [http-nio-8082-exec-2] s.weatherapp.rest.CityRestControllerV1   : Город создан: ID=5, name=Bryansk
+2026-01-15T10:28:27.900+03:00  INFO 11736 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T10:28:27.906+03:00  INFO 11736 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T10:28:27.911+03:00  INFO 11736 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T10:28:27.914+03:00  INFO 11736 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T10:28:27.924+03:00  INFO 11736 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T10:28:34.904+03:00  INFO 6212 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 6212 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T10:28:34.907+03:00  INFO 6212 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T10:28:35.662+03:00  INFO 6212 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T10:28:35.720+03:00  INFO 6212 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 1 JPA repository interface.
+2026-01-15T10:28:36.182+03:00  INFO 6212 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T10:28:36.197+03:00  INFO 6212 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T10:28:36.197+03:00  INFO 6212 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T10:28:36.289+03:00  INFO 6212 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1329 ms
+2026-01-15T10:28:36.459+03:00  INFO 6212 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T10:28:36.536+03:00  INFO 6212 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T10:28:37.098+03:00  INFO 6212 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T10:28:37.148+03:00  INFO 6212 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T10:28:37.261+03:00  INFO 6212 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1cb849b2
+2026-01-15T10:28:37.262+03:00  INFO 6212 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T10:28:37.307+03:00  WARN 6212 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T10:28:37.340+03:00  INFO 6212 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T10:28:38.546+03:00  INFO 6212 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T10:28:38.616+03:00  INFO 6212 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T10:28:38.714+03:00  INFO 6212 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T10:28:39.013+03:00  WARN 6212 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T10:28:39.034+03:00  INFO 6212 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T10:28:39.376+03:00  INFO 6212 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T10:28:39.382+03:00  INFO 6212 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 5.009 seconds (process running for 5.846)
+2026-01-15T10:29:21.126+03:00  INFO 6212 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T10:29:21.126+03:00  INFO 6212 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T10:29:21.128+03:00  INFO 6212 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T10:29:21.168+03:00  WARN 6212 --- [WeatherApp] [http-nio-8082-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'name' for method parameter type String is not present]
+2026-01-15T10:31:10.089+03:00  INFO 6212 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T10:31:10.095+03:00  INFO 6212 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T10:31:10.099+03:00  INFO 6212 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T10:31:10.102+03:00  INFO 6212 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T10:31:10.111+03:00  INFO 6212 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T10:31:16.567+03:00  INFO 880 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 880 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T10:31:16.571+03:00  INFO 880 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T10:31:17.299+03:00  INFO 880 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T10:31:17.359+03:00  INFO 880 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interface.
+2026-01-15T10:31:17.788+03:00  INFO 880 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T10:31:17.801+03:00  INFO 880 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T10:31:17.802+03:00  INFO 880 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T10:31:17.884+03:00  INFO 880 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1261 ms
+2026-01-15T10:31:18.045+03:00  INFO 880 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T10:31:18.098+03:00  INFO 880 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T10:31:18.596+03:00  INFO 880 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T10:31:18.629+03:00  INFO 880 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T10:31:18.731+03:00  INFO 880 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@304068
+2026-01-15T10:31:18.733+03:00  INFO 880 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T10:31:18.768+03:00  WARN 880 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T10:31:18.798+03:00  INFO 880 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T10:31:19.862+03:00  INFO 880 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T10:31:19.926+03:00  INFO 880 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T10:31:20.017+03:00  INFO 880 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T10:31:20.292+03:00  WARN 880 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T10:31:20.310+03:00  INFO 880 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T10:31:20.688+03:00  INFO 880 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T10:31:20.694+03:00  INFO 880 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.606 seconds (process running for 5.404)
+2026-01-15T10:31:27.172+03:00  INFO 880 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T10:31:27.173+03:00  INFO 880 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T10:31:27.175+03:00  INFO 880 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T10:31:27.215+03:00  WARN 880 --- [WeatherApp] [http-nio-8082-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'name' for method parameter type String is not present]
+2026-01-15T10:32:24.628+03:00  INFO 880 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T10:32:24.636+03:00  INFO 880 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T10:32:24.642+03:00  INFO 880 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T10:32:24.645+03:00  INFO 880 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T10:32:24.659+03:00  INFO 880 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T10:32:31.042+03:00  INFO 14860 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 14860 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T10:32:31.045+03:00  INFO 14860 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T10:32:31.770+03:00  INFO 14860 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T10:32:31.830+03:00  INFO 14860 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interface.
+2026-01-15T10:32:32.265+03:00  INFO 14860 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T10:32:32.279+03:00  INFO 14860 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T10:32:32.279+03:00  INFO 14860 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T10:32:32.365+03:00  INFO 14860 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1267 ms
+2026-01-15T10:32:32.542+03:00  INFO 14860 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T10:32:32.595+03:00  INFO 14860 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T10:32:33.093+03:00  INFO 14860 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T10:32:33.126+03:00  INFO 14860 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T10:32:33.229+03:00  INFO 14860 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@304068
+2026-01-15T10:32:33.230+03:00  INFO 14860 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T10:32:33.265+03:00  WARN 14860 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T10:32:33.294+03:00  INFO 14860 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T10:32:34.372+03:00  INFO 14860 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T10:32:34.437+03:00  INFO 14860 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T10:32:34.529+03:00  INFO 14860 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T10:32:34.807+03:00  WARN 14860 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T10:32:34.826+03:00  INFO 14860 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T10:32:35.169+03:00  INFO 14860 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T10:32:35.174+03:00  INFO 14860 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.614 seconds (process running for 5.433)
+2026-01-15T10:32:42.100+03:00  INFO 14860 --- [WeatherApp] [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T10:32:42.100+03:00  INFO 14860 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T10:32:42.101+03:00  INFO 14860 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T10:32:42.121+03:00  WARN 14860 --- [WeatherApp] [http-nio-8082-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' is not supported]
+2026-01-15T10:34:57.797+03:00  WARN 14860 --- [WeatherApp] [http-nio-8082-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' is not supported]
+2026-01-15T10:36:02.752+03:00  INFO 14860 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T10:36:02.757+03:00  INFO 14860 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T10:36:02.762+03:00  INFO 14860 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T10:36:02.764+03:00  INFO 14860 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T10:36:02.773+03:00  INFO 14860 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T10:36:09.398+03:00  INFO 14684 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 14684 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T10:36:09.401+03:00  INFO 14684 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T10:36:10.117+03:00  INFO 14684 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T10:36:10.174+03:00  INFO 14684 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 1 JPA repository interface.
+2026-01-15T10:36:10.610+03:00  INFO 14684 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T10:36:10.623+03:00  INFO 14684 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T10:36:10.623+03:00  INFO 14684 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T10:36:10.699+03:00  INFO 14684 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1245 ms
+2026-01-15T10:36:10.859+03:00  INFO 14684 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T10:36:10.910+03:00  INFO 14684 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T10:36:11.403+03:00  INFO 14684 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T10:36:11.439+03:00  INFO 14684 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T10:36:11.661+03:00  INFO 14684 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@74431832
+2026-01-15T10:36:11.662+03:00  INFO 14684 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T10:36:11.700+03:00  WARN 14684 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T10:36:11.728+03:00  INFO 14684 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T10:36:12.808+03:00  INFO 14684 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T10:36:12.872+03:00  INFO 14684 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T10:36:12.961+03:00  INFO 14684 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T10:36:13.237+03:00  WARN 14684 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T10:36:13.256+03:00  INFO 14684 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T10:36:13.594+03:00  INFO 14684 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T10:36:13.599+03:00  INFO 14684 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 4.685 seconds (process running for 5.509)
+2026-01-15T10:36:21.672+03:00  INFO 14684 --- [WeatherApp] [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T10:36:21.673+03:00  INFO 14684 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T10:36:21.676+03:00  INFO 14684 --- [WeatherApp] [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-01-15T10:36:51.962+03:00  INFO 14684 --- [WeatherApp] [http-nio-8082-exec-4] s.weatherapp.rest.CityRestControllerV1   : POST /cities/add вызван с параметрами: name=Minsk, temp=-23
+2026-01-15T10:36:52.003+03:00  INFO 14684 --- [WeatherApp] [http-nio-8082-exec-4] s.weatherapp.rest.CityRestControllerV1   : Город создан: ID=6, name=Minsk
+2026-01-15T11:02:18.134+03:00  INFO 14684 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T11:02:18.225+03:00  INFO 14684 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T11:02:18.569+03:00  INFO 14684 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T11:02:18.608+03:00  INFO 14684 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T11:02:18.627+03:00  INFO 14684 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-15T11:02:27.259+03:00  INFO 15228 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Starting WeatherAppApplication using Java 25.0.1 with PID 15228 (D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp\target\classes started by Man in D:\COD\HomeWorks\WeatherComparatorApplication\WeatherApp)
+2026-01-15T11:02:27.263+03:00  INFO 15228 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-01-15T11:02:28.269+03:00  INFO 15228 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-15T11:02:28.349+03:00  INFO 15228 --- [WeatherApp] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 1 JPA repository interface.
+2026-01-15T11:02:29.024+03:00  INFO 15228 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-01-15T11:02:29.041+03:00  INFO 15228 --- [WeatherApp] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-15T11:02:29.042+03:00  INFO 15228 --- [WeatherApp] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-15T11:02:29.152+03:00  INFO 15228 --- [WeatherApp] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1816 ms
+2026-01-15T11:02:29.366+03:00  INFO 15228 --- [WeatherApp] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-15T11:02:29.475+03:00  INFO 15228 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-15T11:02:30.138+03:00  INFO 15228 --- [WeatherApp] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-15T11:02:30.188+03:00  INFO 15228 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-15T11:02:30.431+03:00  INFO 15228 --- [WeatherApp] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3de45b6c
+2026-01-15T11:02:30.433+03:00  INFO 15228 --- [WeatherApp] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-15T11:02:30.490+03:00  WARN 15228 --- [WeatherApp] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-15T11:02:30.530+03:00  INFO 15228 --- [WeatherApp] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/weather]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: weather/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-15T11:02:31.930+03:00  INFO 15228 --- [WeatherApp] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-15T11:02:32.025+03:00  INFO 15228 --- [WeatherApp] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T11:02:32.133+03:00  INFO 15228 --- [WeatherApp] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-15T11:02:32.473+03:00  WARN 15228 --- [WeatherApp] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-15T11:02:32.495+03:00  INFO 15228 --- [WeatherApp] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-01-15T11:02:32.922+03:00  INFO 15228 --- [WeatherApp] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-01-15T11:02:32.928+03:00  INFO 15228 --- [WeatherApp] [main] s.weatherapp.WeatherAppApplication       : Started WeatherAppApplication in 6.295 seconds (process running for 7.616)
+2026-01-15T11:03:14.570+03:00  INFO 15228 --- [WeatherApp] [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-15T11:03:14.570+03:00  INFO 15228 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-15T11:03:14.571+03:00  INFO 15228 --- [WeatherApp] [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-15T11:28:26.783+03:00  INFO 15228 --- [WeatherApp] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-15T11:28:26.792+03:00  INFO 15228 --- [WeatherApp] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-15T11:28:26.797+03:00  INFO 15228 --- [WeatherApp] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-15T11:28:26.800+03:00  INFO 15228 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-15T11:28:26.812+03:00  INFO 15228 --- [WeatherApp] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

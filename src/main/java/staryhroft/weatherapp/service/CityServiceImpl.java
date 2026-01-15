@@ -1,8 +1,10 @@
 package staryhroft.weatherapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 import staryhroft.weatherapp.model.City;
 import staryhroft.weatherapp.repository.CityRepository;
 
@@ -27,13 +29,19 @@ public class CityServiceImpl implements CityService {
     public List<City> getAllCities() {
         return cityRepository.findAll();
     }
+
+
     // Найти город по названию
     @Override
     @Transactional(readOnly = true)
     public City getCityByName(String name) {
         return cityRepository.findByName(name)
-                .orElseThrow(() -> new RuntimeException("Город '" + name + "' не найден"));
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Город '" + name + "' не найден"
+                ));
     }
+
+
     //Добавить новый город
     @Override
     public City addCity(City city) {

@@ -1,6 +1,9 @@
 package staryhroft.weatherapp.rest;
 
+import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +13,8 @@ import staryhroft.weatherapp.service.CityService;
 import java.math.BigDecimal;
 import java.util.List;
 
+@Slf4j
+@ComponentScan
 @RestController
 @RequestMapping("/cities")
 public class CityRestControllerV1 {
@@ -21,52 +26,31 @@ public class CityRestControllerV1 {
         this.cityService = cityService;
     }
 
-    /**
-     * Получить все города
-     * GET /cities
-     */
+    //Получить все города из БД
+    //GET /cities
     @GetMapping
     public ResponseEntity<List<City>> getAllCities() {
         List<City> cities = cityService.getAllCities();
         return ResponseEntity.ok(cities);
     }
 
-    /**
-     * Получить город по названию
-     * GET /cities/{name}
-     */
+
+    //Найти город по названию
+    //GET /cities/{name}
+
     @GetMapping("/{name}")
     public ResponseEntity<City> getCityByName(@PathVariable String name) {
-        try {
             City city = cityService.getCityByName(name);
             return ResponseEntity.ok(city);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
     }
 
-    /**
-     * Добавить город через JSON
-     * POST /cities
-     */
-    @PostMapping
-    public ResponseEntity<?> addCity(@RequestBody City city) {
-        try {
-            City createdCity = cityService.addCity(city);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdCity);
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-
-    /**
-     * Альтернативный способ добавления через параметры
-     * POST /cities/add?name=Moscow&temp=15.5
-     */
+    //Добавить город через параметры запроса
+    // POST /cities/add?name=Moscow&temp=15.5
     @PostMapping("/add")
     public ResponseEntity<?> addCityWithParams(
             @RequestParam String name,
             @RequestParam BigDecimal temp) {
+        log.info("POST /cities/add вызван с параметрами: name={}, temp={}", name, temp);
 
         City city = new City();
         city.setName(name);
@@ -74,20 +58,20 @@ public class CityRestControllerV1 {
 
         try {
             City createdCity = cityService.addCity(city);
+            log.info("Город создан: ID={}, name={}", createdCity.getId(), createdCity.getName());
             return ResponseEntity.status(HttpStatus.CREATED).body(createdCity);
         } catch (RuntimeException e) {
+            log.error("Ошибка при создании города: {}", e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-
 
     /**
      * Удалить город по названию
      * DELETE /cities/{name}
      */
-    @DeleteMapping("/{name}")
-    public ResponseEntity<?> deleteCity(@PathVariable String name) {
+    @DeleteMapping("/del")
+    public ResponseEntity<?> deleteCity(@RequestParam String name) {
         try {
             cityService.deleteCity(name);
             return ResponseEntity.noContent().build(); // 204 No Content
@@ -172,33 +156,6 @@ public class CityRestControllerV1 {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //@RestController
