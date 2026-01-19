@@ -22,11 +22,22 @@ public class City {
     @Column(name = "temperature", precision = 4, scale = 1)
     private BigDecimal temperature;
 
+    @Column(name = "is_favorite", nullable = false)
+    private Boolean favorite = Boolean.FALSE;
+
     public City() {}
 
-    public City(String name, BigDecimal temperature) {
+    public City(Long id, String name, BigDecimal temperature, Boolean favorite) {
+        this.id = id;
         this.name = name;
         this.temperature = temperature;
+        this.favorite = favorite;
+    }
+
+    public City(String name, BigDecimal temperature, Boolean favorite) {
+        this.name = name;
+        this.temperature = temperature;
+        this.favorite = favorite;
     }
 
     public Long getId() { return id; }
@@ -37,4 +48,12 @@ public class City {
 
     public BigDecimal getTemperature() { return temperature; }
     public void setTemperature(BigDecimal temperature) { this.temperature = temperature; }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
+    }
 }

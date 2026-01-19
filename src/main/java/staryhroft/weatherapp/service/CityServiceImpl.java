@@ -1,7 +1,10 @@
 package staryhroft.weatherapp.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -9,227 +12,134 @@ import staryhroft.weatherapp.model.City;
 import staryhroft.weatherapp.repository.CityRepository;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Comparator;
 import java.util.List;
 
 @Service
+@Slf4j
+@RequiredArgsConstructor
 @Transactional
 public class CityServiceImpl implements CityService {
-
+    private static final int MAX_FAVORITES = 3;
     private final CityRepository cityRepository;
 
-    @Autowired
-    public CityServiceImpl(CityRepository cityRepository) {
-        this.cityRepository = cityRepository;
-    }
     //Получить все города из БД
     @Override
     @Transactional(readOnly = true)
-    public List<City> getAllCities() {
-        return cityRepository.findAll();
+    public List<City> getAllCitiesDesk() {
+        return cityRepository.findAllWithFavoritesFirst();
     }
 
 
     // Найти город по названию
     @Override
     @Transactional(readOnly = true)
-    public City getCityByName(String name) {
-        return cityRepository.findByName(name)
+    public ResponseEntity<Void> getCityByName(String name) {
+        City city = cityRepository.findByName(name)
                 .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Город '" + name + "' не найден"
+                        HttpStatus.NOT_FOUND,
+                        "Город '" + name + "' не найден"
                 ));
+
+        HttpHeaders head = new HttpHeaders();
+        head.add("X-City-Name", city.getName());
+        head.add("X-City-Temperature", city.getTemperature().toString());
+
+        return ResponseEntity.ok()
+                .headers(head)
+                .build();
     }
 
 
-    //Добавить новый город
+    //Добавить город
     @Override
-    public City addCity(City city) {
-        if (cityRepository.existsByName(city.getName())) {
-            throw new RuntimeException("Город '" + city.getName() + "' уже существует");
+    @Transactional
+    public ResponseEntity<Void> addCity(String name, BigDecimal temperature) {
+        if (cityRepository.existsByName(name)) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Город с именем '" + name + "' уже существует. Добавление отменено"
+            );
         }
-        return cityRepository.save(city);
+        City city = new City();
+        city.setName(name);
+        city.setTemperature(temperature);
+
+        City createdCity = cityRepository.save(city);
+        HttpHeaders head = new HttpHeaders();
+        head.add("X-Created-City-Name", createdCity.getName());
+        head.add("X-Created-City-Temp", createdCity.getTemperature().toString());
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .headers(head)
+                .build();
     }
+
+    // Передать один из имеющихся городов в любимые города
+    @Override
+    @Transactional
+    public String setCityAsFavorite(String cityName) {
+        City city = cityRepository.findByName(cityName)
+                .orElseThrow(() -> new RuntimeException("Город '" + cityName + "' не найден"));
+        // Если город уже в любимых
+        if (city.getFavorite()) {
+            return "Город " + cityName + " уже является любимым городом";
+        }
+        // Если есть свободная квота
+        if (cityRepository.countFavoriteCities() < MAX_FAVORITES) {
+            city.setFavorite(true);
+            cityRepository.save(city);
+            return "Город " + cityName + " добавлен в список любимых городов";
+        }
+
+        // Если нет свободных квот
+        return "Достигнут лимит любимых городов. Выберите город для замены.";
+    }
+    // Удалить город из списка любимых городов
+    @Override
+    @Transactional
+    public String removeCityFromFavorites(String cityName) {
+        City city = cityRepository.findByName(cityName)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Город '" + cityName + "' не найден"
+                ));
+
+        city.setFavorite(false);
+        cityRepository.save(city);
+
+        return "Город " + cityName + " убран из списка любимых городов";
+    }
+
     //Удалить город по названию
     @Override
+    @Transactional
     public void deleteCity(String name) {
-        City city = getCityByName(name);
+        City city = cityRepository.findByName(name)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Город '" + name + "' не найден"
+                ));
+
         cityRepository.delete(city);
     }
-    //Проверить, существует ли город с указанным названием
-    @Override
-    @Transactional(readOnly = true)
-    public boolean existsByName(String name) {
-        return cityRepository.existsByName(name);
-    }
-    //Получить общее количество городов в базе
+
+    //Получить количество городов в базе
     @Override
     @Transactional(readOnly = true)
     public long countCities() {
         return cityRepository.count();
     }
-    //Получить город с максимальной температурой
-    @Override
-    @Transactional(readOnly = true)
-    public City getWarmestCity() {
-        List<City> cities = getAllCities();
-        if (cities.isEmpty()) {
-            throw new RuntimeException("В базе данных нет городов");
-        }
-        return cities.stream()
-                .max(Comparator.comparing(City::getTemperature))
-                .orElseThrow(() -> new RuntimeException("Не удалось найти самый теплый город"));
-    }
-    //Получить город с минимальной температурой
-    @Override
-    @Transactional(readOnly = true)
-    public City getColdestCity() {
-        List<City> cities = getAllCities();
 
-        if (cities.isEmpty()) {
-            throw new RuntimeException("В базе данных нет городов");
-        }
-        return cities.stream()
-                .min(Comparator.comparing(City::getTemperature))
-                .orElseThrow(() -> new RuntimeException("Не удалось найти самый холодный город"));
-    }
-    //Получить среднюю температуру по всем городам
-    @Override
-    @Transactional(readOnly = true)
-    public BigDecimal getAverageTemperature() {
-        List<City> cities = getAllCities();
-        if (cities.isEmpty()) {
-            throw new RuntimeException("В базе данных нет городов");
-        }
-        BigDecimal sum = cities.stream()
-                .map(City::getTemperature)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-        return sum.divide(BigDecimal.valueOf(cities.size()), 2, RoundingMode.HALF_UP);
-    }
     //Удалить все города из базы данных
     @Override
+    @Transactional
     public void deleteAllCities() {
-        cityRepository.deleteAll();
+        try {
+            cityRepository.deleteAll();
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Ошибка при удалении всех городов: " + e.getMessage()
+            );
+        }
     }
-
-//@Service
-//public class CityServiceImpl /*implements CityService*/{
-//    @Autowired
-//    private final CityRepository cityRepository;
-//
-//    public CityServiceImpl(CityRepository cityRepository) {
-//        this.cityRepository = cityRepository;
-//    }
-////    // Создать таблицу
-////    @Override
-//    public void createTable() {
-//        cityRepository.createTable();
-//    }
-//    // Показать все города из таблицы
-//    @Override
-//    public List<City> getAllCities() {
-//        return cityRepository.getAllCities();
-//    }
-//    //Показать город по названию
-//    @Override
-//    public City getCityByName(String cityName) {
-//        City city = cityRepository.getCityByName(cityName);
-//        if (city == null) {
-//            System.out.println("Город '" + cityName + "' не найден");
-//        }
-//        return city;
-//    }
-//    //Проверить наличие города в списке
-//    @Override
-//    public boolean cityExists(String cityName) {
-//        return cityRepository.existsByCity(cityName);
-//    }
-    // Добавление города
-//    @Override
-//    public void addCity(String cityName, Float temperature) {
-//        City city = new City(cityName, temperature);
-//        cityRepository.addCityToTable(city);
-//    }
-//    //Удаление города
-//    @Override
-//    public void deleteCityByName(String cityName) {
-//        cityRepository.deleteCityByName(cityName);
-//    }
-
-//    @Override
-//    public void addCityIfNotExists(String cityName, Float temperature) {
-//        if (!cityRepository.existsByCity(cityName)) {
-//            City city = new City(cityName, temperature);
-//            cityRepository.addCityToTable(city);
-//            System.out.println("Город " + cityName + " успешно добавлен");
-//        } else {
-//            System.out.println("Город " + cityName + " уже существует");
-//        }
-//    }
-
-
-
-
-//
-//    @Override
-//    public void create(String temperature, String cityName) {
-//
-//    }
-//
-//    @Override
-//    public String deleteCity(String cityName) {
-//        return "";
-//    }
-//    private List<City> CITIES = Stream.of(
-//            new City(1L, 32.1F, "Bereza"),
-//            new City(2L, 28.5F, "Minsk"),
-//            new City(3L, 25.8F, "Moscow")
-//    ).collect(Collectors.toList());
-
-//    @Override
-//    public List<City> getAllCities() {
-//        return CITIES;
-//    }
-//
-//    @Override
-//    public City getByCityName(String cityName) {
-//        return CITIES.stream().filter(city -> city.getCityName().equals(cityName))
-//                .findFirst()
-//                .orElse(new City("Город не найден"));
-//    }
-//
-//
-//    @Override
-//    public void create(String temperature, String cityName ) {
-//        this.CITIES.add(getCity(temperature, cityName));
-//    }
-
-//    private City getCity(String temperature, String cityName) {
-//        City city = new City();
-//        long maxId = getMaxId();
-//        city.setId(maxId + 1L);
-//        city.setTemperature(Float.valueOf(temperature));
-//        city.setCityName(cityName);
-//        return city;
-//    }
-
-//    private long getMaxId() {
-//        long maxId = CITIES.stream()
-//                .mapToLong(City::getId)
-//                .max()
-//                .orElse(0L);
-//        return maxId;
-//    }
-//
-//
-//    @Override
-//    public String deleteCity(String cityName) {
-//        boolean wasRemoved = this.CITIES.removeIf(x -> x.getCityName().equalsIgnoreCase(cityName));
-//
-//        if (wasRemoved) {
-//            return "Город '" + cityName + "' успешно удален";
-//        } else {
-//            return "Город '" + cityName + "' не найден. Удаление не выполнено";
-//        }
-//    }
 }
