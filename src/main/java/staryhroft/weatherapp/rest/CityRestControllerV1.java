@@ -1,89 +1,70 @@
 package staryhroft.weatherapp.rest;
 
-import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import staryhroft.weatherapp.model.City;
+import staryhroft.weatherapp.dto.response.CityDto;
+import staryhroft.weatherapp.dto.response.FavoriteDto;
 import staryhroft.weatherapp.service.CityService;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Slf4j
 @ComponentScan
 @RestController
 @RequestMapping("/cities")
+@RequiredArgsConstructor
 public class CityRestControllerV1 {
 
     private final CityService cityService;
 
-    @Autowired
-    public CityRestControllerV1(CityService cityService) {
-        this.cityService = cityService;
-    }
-
     //Получить все города из БД
     //GET /cities
     @GetMapping
-    public ResponseEntity<List<City>> getAllCities() {
-        List<City> cities = cityService.getAllCitiesDesk();
-        return ResponseEntity.ok(cities);
+    public ResponseEntity<List<CityDto>> getAllCitiesRequest() {
+        return ResponseEntity.ok(cityService.getAllCitiesSorted());
     }
 
     //Найти город по названию
     //GET /cities/{name}
     @GetMapping("/{name}")
-    public ResponseEntity<Void> getCityByNameHeaders(@PathVariable String name) {
-        return cityService.getCityByName(name);
+    public ResponseEntity<CityDto> getCityByNameRequest(@PathVariable String name) {
+        CityDto cityDto = cityService.getWeatherByCityName(name);
+        return ResponseEntity.ok(cityDto);
     }
 
-    //Добавить город в заголовок, запрос: curl -X POST http://localhost:8080/cities/add-head
-    //                                         -H "name: Moscow" \
-    //                                         -H "temp: 15.5"
-    @PostMapping("/add")
-    public ResponseEntity<Void> addCityWithHeaders(
-            @RequestHeader("Name") String name,
-            @RequestHeader("Temp") BigDecimal temp) {
-
-        return cityService.addCity(name, temp);
-    }
-    //Добавить город в из БД в список любимых городов
+    //Добавить город в из БД в список любимых городов PATCH /cities/{cityName}/favorite
     @PatchMapping("/{cityName}/favorite")
-    public String setCityAsFavorite(@PathVariable String cityName) {
-        return cityService.setCityAsFavorite(cityName);
+    public ResponseEntity<FavoriteDto> setCityAsFavoriteRequest(@PathVariable String cityName) {
+        return ResponseEntity.ok(cityService.setCityAsFavorite(cityName));
     }
 
+
+//Убрать город в из списка любимых городов PATCH /cities/{cityName}/favorite/remove
     @PatchMapping("/{cityName}/favorite/remove")
-    public ResponseEntity<String> removeCityFromFavorites(@PathVariable String cityName) {
-        String result = cityService.removeCityFromFavorites(cityName);
-        return ResponseEntity.ok(result);
+    public ResponseEntity<FavoriteDto> removeCityFromFavoritesRequest(@PathVariable String cityName) {
+        return ResponseEntity.ok(cityService.removeCityFromFavorites(cityName));
     }
 
-    //Удалить город по названию
-    //DELETE /cities/{name}
-    @DeleteMapping("/del")
-    public ResponseEntity<?> deleteCityByName(@RequestParam String name) {
+    //Удалить город по названию DELETE /cities/{name}
+    @DeleteMapping("/{name}")
+    public ResponseEntity<Void> deleteCityRequest(@PathVariable String name) {
+        log.info("Удаление города: {}", name);
         cityService.deleteCity(name);
-        return ResponseEntity.noContent().build(); // 204 No Content
+        return ResponseEntity.noContent().build();
     }
 
-    //Получить количество городов в базе
-    //GET /cities/count
+    //Получить количество городов в базе GET /cities/count
     @GetMapping("/count")
-    public ResponseEntity<Long> countCities() {
-        long count = cityService.countCities();
-        return ResponseEntity.ok(count);
+    public ResponseEntity<Long> countCitiesRequest() {
+        return ResponseEntity.ok(cityService.countCities());
     }
 
-    //Удалить все города из базы данных
-    //DELETE /cities
+    //Удалить все города из базы данных DELETE /cities
     @DeleteMapping
-    public ResponseEntity<Void> deleteAllCities() {
+    public ResponseEntity<Void> deleteAllCitiesRequest() {
         cityService.deleteAllCities();
         return ResponseEntity.noContent().build();
     }

@@ -16,18 +16,14 @@ public interface CityRepository extends JpaRepository<City, Long> {
     List<City> findAllWithFavoritesFirst();
 
     // Найти город по названию
-    Optional<City> findByName(String name);
+    City findByName(String name);
 
     // Проверить существование города по названию
     boolean existsByName(String name);
 
-    // Проверить наличие города в списке избранных
-    @Query("SELECT COUNT(c) FROM City c WHERE c.favorite = true")
-    int countFavoriteCities();
-
-    // Удалить город по названию
+    //Удалить город по названию
     void deleteByName(String name);
 
-    // Проверить существование (без учета регистра)
-    boolean existsByNameIgnoreCase(String name);
+    @Query("SELECT COUNT(c) FROM City c WHERE c.favorite = true")
+    long countByFavoriteTrue();
 }

@@ -1,27 +1,26 @@
 package staryhroft.weatherapp.service;
 
-import org.springframework.http.ResponseEntity;
+import staryhroft.weatherapp.dto.request.CityCreateDto;
+import staryhroft.weatherapp.dto.response.CityDto;
+import staryhroft.weatherapp.dto.response.FavoriteDto;
 import staryhroft.weatherapp.model.City;
 
-import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 public interface CityService {
 
     //Получить все города из БД
-    List<City> getAllCitiesDesk();
+    List<CityDto> getAllCitiesSorted();
 
-    // Найти город по названию
-    ResponseEntity<Void> getCityByName(String name);
-
-    //Добавить новый город
-    ResponseEntity<Void> addCity(String name, BigDecimal temp);
+    //Получить информацию о городе
+    CityDto getWeatherByCityName(String name);
 
     //Добавить город из списка в Любимые города
-    String setCityAsFavorite(String cityName);
+    FavoriteDto setCityAsFavorite(String cityName);
 
     // Удалить город из списка любимых городов
-    String removeCityFromFavorites(String cityName);
+    FavoriteDto removeCityFromFavorites(String cityName);
 
     //Удалить город по названию
     void deleteCity(String name);

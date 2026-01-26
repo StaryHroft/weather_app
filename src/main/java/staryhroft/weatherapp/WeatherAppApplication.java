@@ -12,3 +12,4 @@ public class WeatherAppApplication {
     }
 
 }
+//Ключ от OpenWeatherMap API - db3e484e3fbcdb656a958afa1a3f3ffe
