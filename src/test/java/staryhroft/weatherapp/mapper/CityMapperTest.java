@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import staryhroft.weatherapp.dto.response.CityDto;
-import staryhroft.weatherapp.model.City;
+import staryhroft.weatherapp.entity.City;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -23,7 +23,7 @@ class CityMapperTest {
         cityMapper = new CityMapper();
     }
 
-
+//ошибка
     @Test
     void shouldMapCityToDto_WhenAllFieldsPresent() {
         // Given
@@ -42,8 +42,8 @@ class CityMapperTest {
         assertNotNull(result);
         assertEquals(1L, result.getId());
         assertEquals("Москва", result.getName());
-        assertEquals(15.5, result.getTemperature());
-        assertTrue(result.getFavorite());
+        assertEquals(BigDecimal.valueOf(15.5), result.getTemperature());
+        assertEquals(Boolean.TRUE, result.getFavorite());
         assertEquals(now, result.getTemperatureUpdatedAt());
     }
 
@@ -59,7 +59,7 @@ class CityMapperTest {
         City city = new City();
         city.setId(2L);
         city.setName("Санкт-Петербург");
-        city.setTemperature(null);
+        city.setTemperature((BigDecimal) null);
         city.setFavorite(false);
 
         CityDto result = cityMapper.toDto(city);
@@ -84,10 +84,11 @@ class CityMapperTest {
         assertNotNull(result);
         assertEquals(3L, result.getId());
         assertEquals("Казань", result.getName());
-        assertEquals(10.0, result.getTemperature());
+        assertEquals(BigDecimal.valueOf(10.0), result.getTemperature());
         assertNull(result.getTemperatureUpdatedAt(), "Время обновления должно быть null");
     }
 
+//ошибка
     @Test
     void shouldMapCity_WhenFavoriteIsNull() {
         // Given
@@ -102,7 +103,7 @@ class CityMapperTest {
         assertNotNull(result);
         assertEquals(4L, result.getId());
         assertEquals("Новосибирск", result.getName());
-        assertEquals(5.0, result.getTemperature());
+        assertEquals(BigDecimal.valueOf(5.0), result.getTemperature());
         assertNull(result.getFavorite(), "Флаг избранного должен быть null");
     }
 
@@ -118,7 +119,7 @@ class CityMapperTest {
         assertNotNull(result);
         assertNull(result.getId(), "ID должен быть null");
         assertEquals("Екатеринбург", result.getName());
-        assertEquals(8.0, result.getTemperature());
+        assertEquals(BigDecimal.valueOf(8.0), result.getTemperature());
     }
 
     @ParameterizedTest
@@ -132,7 +133,7 @@ class CityMapperTest {
         CityDto result = cityMapper.toDto(city);
 
         assertNotNull(result);
-        assertEquals(temperature, result.getTemperature(),
+        assertEquals(BigDecimal.valueOf(temperature), result.getTemperature(),
                 "Температура должна сохраняться точно: " + temperature);
     }
 
@@ -186,9 +187,10 @@ class CityMapperTest {
         assertNotNull(result);
         assertEquals(8L, result.getId());
         assertEquals("Владивосток", result.getName());
-        assertEquals(7.0, result.getTemperature());
+        assertEquals(BigDecimal.valueOf(7.0), result.getTemperature());
     }
 
+//ошибка
     @Test
     void shouldHandleMultipleMappings() {
         City[] cities = {
@@ -219,7 +221,7 @@ class CityMapperTest {
 
         CityDto result = cityMapper.toDto(city);
 
-        assertEquals(preciseTemperature, result.getTemperature(),
+        assertEquals(BigDecimal.valueOf(preciseTemperature), result.getTemperature(),
                 "Температура должна сохраняться с точностью double");
     }
 

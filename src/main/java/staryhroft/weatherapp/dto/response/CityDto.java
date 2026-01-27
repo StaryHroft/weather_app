@@ -16,7 +16,7 @@ public class CityDto {
     private Long id;
     private String name;
     private BigDecimal temperature;
-    private boolean favorite;
+    private Boolean favorite;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
 
@@ -28,19 +28,15 @@ public class CityDto {
     public CityDto() {
     }
 
-    public CityDto(Long id, String name, BigDecimal temperature, boolean favorite) {
+    public CityDto(Long id, String name, BigDecimal temperature, Boolean favorite) {
         this.id = id;
         this.name = name;
         this.temperature = temperature;
         this.favorite = favorite;
     }
 
-    public boolean getFavorite() {
-        return favorite;
-    }
-
     public CityDto(Long id, String name, BigDecimal temperature,
-                   boolean favorite, LocalDateTime createdAt, LocalDateTime updatedAt,
+                   Boolean favorite, LocalDateTime createdAt, LocalDateTime updatedAt,
                    LocalDateTime temperatureUpdatedAt) {
         this.id = id;
         this.name = name;

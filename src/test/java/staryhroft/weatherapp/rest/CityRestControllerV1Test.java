@@ -9,20 +9,18 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import staryhroft.weatherapp.dto.response.CityDto;
 import staryhroft.weatherapp.dto.response.FavoriteDto;
 import staryhroft.weatherapp.service.CityService;
-import org.springframework.boot.test.mock.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -41,7 +39,7 @@ class CityRestControllerV1Test {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @MockBean
+    @MockitoBean
     private CityService cityService;
 
     private CityDto testCityDto;
@@ -67,6 +65,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 1: GET /cities - получить все города
      */
+    //ошибка
     @Test
     void getAllCitiesRequest_ShouldReturnListOfCities() throws Exception {
         // Given
@@ -101,6 +100,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 2: GET /cities/{name} - успешный поиск города
      */
+    //ошибка
     @Test
     void getCityByNameRequest_WhenCityExists_ShouldReturnCity() throws Exception {
         // Given
@@ -122,6 +122,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 3: GET /cities/{name} - город не найден (обработка исключения)
      */
+    //ошибка
     @Test
     void getCityByNameRequest_WhenCityNotFound_ShouldThrowException() throws Exception {
         // Given
@@ -139,6 +140,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 4: GET /cities/{name} - пустое имя города
      */
+    //ошибка
     @ParameterizedTest
     @NullAndEmptySource
     void getCityByNameRequest_WithInvalidName_ShouldReturnBadRequest(String cityName) throws Exception {
@@ -154,6 +156,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 5: PATCH /cities/{cityName}/favorite - добавить в избранное
      */
+    //ошибка
     @Test
     void setCityAsFavoriteRequest_ShouldReturnFavoriteDto() throws Exception {
         // Given
@@ -174,6 +177,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 6: PATCH /cities/{cityName}/favorite/remove - убрать из избранного
      */
+    //ошибка
     @Test
     void removeCityFromFavoritesRequest_ShouldReturnFavoriteDto() throws Exception {
         // Given
@@ -200,6 +204,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 7: DELETE /cities/{name} - удалить город
      */
+    //ошибка
     @Test
     void deleteCityRequest_ShouldReturnNoContent() throws Exception {
         // Given
@@ -216,6 +221,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 8: DELETE /cities/{name} - удаление несуществующего города
      */
+    //ошибка
     @Test
     void deleteCityRequest_WhenCityNotFound_ShouldHandleException() throws Exception {
         // Given
@@ -233,6 +239,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 9: GET /cities/count - получить количество городов
      */
+    //ошибка
     @Test
     void countCitiesRequest_ShouldReturnCount() throws Exception {
         // Given
@@ -251,6 +258,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 10: DELETE /cities - удалить все города
      */
+    //ошибка
     @Test
     void deleteAllCitiesRequest_ShouldReturnNoContent() throws Exception {
         // Given
@@ -267,6 +275,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 11: Проверка Content-Type в ответах
      */
+    //ошибка
     @Test
     void allResponses_ShouldHaveApplicationJsonContentType() throws Exception {
         // Для всех эндпоинтов проверяем Content-Type
@@ -291,6 +300,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 12: Некорректный HTTP метод
      */
+    //ошибка
     @Test
     void invalidHttpMethod_ShouldReturn405() throws Exception {
         // Попытка вызвать POST на эндпоинт, который принимает только GET
@@ -302,6 +312,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 13: Проверка логирования для DELETE
      */
+    //ошибка
     @Test
     void deleteCityRequest_ShouldLogOperation() throws Exception {
         // Given
@@ -318,6 +329,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 14: Пустой список городов
      */
+    //ошибка
     @Test
     void getAllCitiesRequest_WhenNoCities_ShouldReturnEmptyList() throws Exception {
         // Given
@@ -336,6 +348,7 @@ class CityRestControllerV1Test {
     /**
      * Тест 15: Специальные символы в названии города
      */
+    //ошибка
     @Test
     void getCityByNameRequest_WithSpecialCharacters_ShouldWork() throws Exception {
         // Given

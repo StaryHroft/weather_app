@@ -2,7 +2,7 @@ package staryhroft.weatherapp.mapper;
 
 import org.springframework.stereotype.Component;
 import staryhroft.weatherapp.dto.response.CityDto;
-import staryhroft.weatherapp.model.City;
+import staryhroft.weatherapp.entity.City;
 
 @Component
 public class CityMapper {

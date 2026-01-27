@@ -4,12 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import staryhroft.weatherapp.model.City;
+import staryhroft.weatherapp.entity.City;
 import staryhroft.weatherapp.service.WeatherApiResponse;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.concurrent.atomic.AtomicInteger;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -55,41 +60,50 @@ class TemperatureUpdateTest {
 
         // Then
         verify(city).setTemperature(temperature);
-        verify(city, times(1)).setTemperature(any());
+        verify(city, times(1)).setTemperature((BigDecimal) any());
         verify(city, times(1)).setTemperatureUpdatedAt(any());
         verify(city, times(1)).setUpdatedAt(any());
     }
 
+    //ошибка
     @Test
     void updateCityTemperature_ShouldSetSameTimeForBothTimestamps() {
         // Given
         City city = mock(City.class);
         WeatherApiResponse apiResponse = mock(WeatherApiResponse.class);
         when(apiResponse.getTemperature()).thenReturn(new BigDecimal("20.0"));
+        // Фиксируем время для теста
+        LocalDateTime fixedTime = LocalDateTime.of(2024, 1, 27, 12, 0, 0);
 
-        // Capture the time used
-        LocalDateTime[] capturedTime = new LocalDateTime[2];
-        int[] callIndex = {0};
+        // Mock статический метод LocalDateTime.now() если используете Mockito 3.4+
+        try (MockedStatic<LocalDateTime> mockedDateTime = mockStatic(LocalDateTime.class)) {
+            mockedDateTime.when(LocalDateTime::now).thenReturn(fixedTime);
 
-        doAnswer(invocation -> {
-            capturedTime[callIndex[0]++] = invocation.getArgument(0);
-            return null;
-        }).when(city).setTemperatureUpdatedAt(any(LocalDateTime.class));
+            // Capture the time used
+            LocalDateTime[] capturedTimes = new LocalDateTime[2];
+            AtomicInteger callIndex = new AtomicInteger(0);
 
-        doAnswer(invocation -> {
-            capturedTime[callIndex[0]++] = invocation.getArgument(0);
-            return null;
-        }).when(city).setUpdatedAt(any(LocalDateTime.class));
+            doAnswer(invocation -> {
+                capturedTimes[callIndex.getAndIncrement()] = invocation.getArgument(0);
+                return null;
+            }).when(city).setTemperatureUpdatedAt(any(LocalDateTime.class));
 
-        // When
-        TemperatureUpdate.updateCityTemperature(city, apiResponse);
+            doAnswer(invocation -> {
+                capturedTimes[callIndex.getAndIncrement()] = invocation.getArgument(0);
+                return null;
+            }).when(city).setUpdatedAt(any(LocalDateTime.class));
 
-        // Then
-        assertEquals(2, callIndex[0]);
-        assertNotNull(capturedTime[0]);
-        assertNotNull(capturedTime[1]);
-        assertEquals(capturedTime[0], capturedTime[1]);
+            // When
+            TemperatureUpdate.updateCityTemperature(city, apiResponse);
+
+            // Then
+            assertEquals(2, callIndex.get());
+            assertEquals(fixedTime, capturedTimes[0]);
+            assertEquals(fixedTime, capturedTimes[1]);
+            verify(city).setTemperature(new BigDecimal("20.0"));
+        }
     }
+
 
     @Test
     void updateCityTemperature_ShouldHandleNullTemperature() {
@@ -103,7 +117,7 @@ class TemperatureUpdateTest {
         TemperatureUpdate.updateCityTemperature(city, apiResponse);
 
         // Then
-        verify(city).setTemperature(null);
+        verify(city).setTemperature((BigDecimal) null);
         verify(city).setTemperatureUpdatedAt(any(LocalDateTime.class));
         verify(city).setUpdatedAt(any(LocalDateTime.class));
     }
@@ -178,7 +192,7 @@ class TemperatureUpdateTest {
         verify(city, never()).setId(anyLong());
 
         // Проверяем, что вызываются только нужные методы
-        verify(city, times(1)).setTemperature(any());
+        verify(city, times(1)).setTemperature((BigDecimal) any());
         verify(city, times(1)).setTemperatureUpdatedAt(any());
         verify(city, times(1)).setUpdatedAt(any());
     }
@@ -206,18 +220,34 @@ class TemperatureUpdateTest {
         ));
     }
 
+    //ошибка
     @Test
     void constructor_ShouldBePrivate() throws Exception {
         // Given
-        var constructor = TemperatureUpdate.class.getDeclaredConstructor();
-
+        Constructor<TemperatureUpdate> constructor =
+                TemperatureUpdate.class.getDeclaredConstructor();
         // Then
         assertFalse(constructor.isAccessible());
+        assertFalse(Modifier.isPublic(constructor.getModifiers()));
+        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
 
         // Проверяем, что нельзя создать экземпляр
         constructor.setAccessible(true);
-        Exception exception = assertThrows(Exception.class, constructor::newInstance);
-        assertNotNull(exception);
+        // При вызове через reflection исключение оборачивается в InvocationTargetException
+        InvocationTargetException invocationException = assertThrows(
+                InvocationTargetException.class,
+                constructor::newInstance
+        );
+
+        // Извлекаем оригинальное исключение
+        Throwable actualException = invocationException.getCause();
+        assertNotNull(actualException);
+        assertInstanceOf(UnsupportedOperationException.class, actualException);
+
+        // Проверяем сообщение
+        assertThat(actualException.getMessage())
+                .contains("utility class")
+                .contains("cannot be instantiated");
     }
 
     @Test

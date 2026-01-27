@@ -1,6 +1,6 @@
 package staryhroft.weatherapp.util;
 
-import staryhroft.weatherapp.model.City;
+import staryhroft.weatherapp.entity.City;
 
 import java.time.LocalDateTime;
 import java.time.Duration;
@@ -14,9 +14,11 @@ public class TemperatureActual {
         }
 
         LocalDateTime now = LocalDateTime.now();
-        long hoursPassed = Duration.between(city.getTemperatureUpdatedAt(), now).toHours();
+        LocalDateTime updatedAt = city.getTemperatureUpdatedAt();
 
-        return hoursPassed < TEMPERATURE_VALID_HOURS;
+        Duration duration = Duration.between(updatedAt, now);
+        // Используйте toMinutes() для большей точности
+        return duration.toMinutes() < (TEMPERATURE_VALID_HOURS * 60L);
     }
 
     private TemperatureActual() {

@@ -3,8 +3,6 @@ package staryhroft.weatherapp.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -14,14 +12,13 @@ import staryhroft.weatherapp.dto.response.FavoriteDto;
 import staryhroft.weatherapp.exception.CityNotFoundException;
 import staryhroft.weatherapp.exception.WeatherApiException;
 import staryhroft.weatherapp.mapper.CityMapper;
-import staryhroft.weatherapp.model.City;
+import staryhroft.weatherapp.entity.City;
 import staryhroft.weatherapp.repository.CityRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -89,8 +86,8 @@ class CityServiceImplTest {
         CityDto favoriteDto = CityDto.builder().id(1L).name("Moscow").favorite(true).build();
         CityDto regularDto = CityDto.builder().id(2L).name("London").favorite(false).build();
 
-        when(cityMapper.toDto(favoriteCity)).thenReturn(favoriteDto);
-        when(cityMapper.toDto(regularCity)).thenReturn(regularDto);
+        //when(cityMapper.toDto(favoriteCity)).thenReturn(favoriteDto);
+        //when(cityMapper.toDto(regularCity)).thenReturn(regularDto);
 
         List<CityDto> result = cityService.getAllCitiesSorted();
 
@@ -103,7 +100,7 @@ class CityServiceImplTest {
 
         verify(cityRepository, times(1)).findAllWithFavoritesFirst();
     }
-
+    //ошибка
     @Test
     void getWeatherByCityName_WhenCityExistsAndTemperatureActual_ShouldReturnFromDb() {
         String cityName = "Moscow";
@@ -120,7 +117,7 @@ class CityServiceImplTest {
         verify(weatherApiClient, never()).fetchWeather(anyString());
         verify(cityRepository, never()).save(any());
     }
-
+    //ошибка
     @Test
     void getWeatherByCityName_WhenCityExistsButTemperatureOutdated_ShouldUpdateFromApi() {
         String cityName = "Moscow";
@@ -151,7 +148,7 @@ class CityServiceImplTest {
         verify(weatherApiClient, times(1)).fetchWeather(cityName);
         verify(cityRepository, times(1)).save(any(City.class));
     }
-
+    //ошибка
     @Test
     void getWeatherByCityName_WhenCityNotFound_ShouldCreateFromApi() {
         String cityName = "NewCity";
@@ -179,7 +176,7 @@ class CityServiceImplTest {
         verify(cityRepository, times(1)).save(any(City.class));
         verify(weatherApiClient, times(1)).fetchWeather(cityName);
     }
-
+    //ошибка
     @Test
     void setCityAsFavorite_WhenCityExistsAndNotFavorite_ShouldAddToFavorites() {
         String cityName = "Moscow";
@@ -195,14 +192,14 @@ class CityServiceImplTest {
 
         FavoriteDto result = cityService.setCityAsFavorite(cityName);
 
-        assertTrue(result.getIsFavorite());
+        assertTrue(result.getFavorite());
         assertEquals("Moscow", result.getCityName());
         assertTrue(result.getMessage().contains("добавлен в избранное"));
 
         verify(cityRepository, times(1)).save(city);
         assertTrue(city.getFavorite());
     }
-
+    //ошибка
     @Test
     void setCityAsFavorite_WhenCityAlreadyFavorite_ShouldReturnError() {
         String cityName = "Moscow";
@@ -216,13 +213,13 @@ class CityServiceImplTest {
 
         FavoriteDto result = cityService.setCityAsFavorite(cityName);
 
-        assertFalse(result.getIsFavorite());
+        assertFalse(result.getFavorite());
         assertEquals("Город уже в избранном", result.getMessage());
 
         verify(cityRepository, never()).save(any());
     }
 
-
+    //ошибка
     @Test
     void setCityAsFavorite_WhenMaxFavoritesReached_ShouldReturnError() {
         String cityName = "Moscow";
@@ -237,7 +234,7 @@ class CityServiceImplTest {
 
         FavoriteDto result = cityService.setCityAsFavorite(cityName);
 
-        assertFalse(result.getIsFavorite());
+        assertFalse(result.getFavorite());
         assertTrue(result.getMessage().contains("Нельзя добавить более 3 городов"));
 
         verify(cityRepository, never()).save(any());
@@ -258,6 +255,7 @@ class CityServiceImplTest {
     /**
      * Тест 9: Удалить город из избранного - успешно
      */
+    //ошибка
     @Test
     void removeCityFromFavorites_WhenCityIsFavorite_ShouldRemove() {
         // Given
@@ -275,7 +273,7 @@ class CityServiceImplTest {
         FavoriteDto result = cityService.removeCityFromFavorites(cityName);
 
         // Then
-        assertFalse(result.getIsFavorite());
+        assertFalse(result.getFavorite());
         assertEquals("Moscow", result.getCityName());
         assertTrue(result.getMessage().contains("удален из избранного"));
 
@@ -286,6 +284,7 @@ class CityServiceImplTest {
     /**
      * Тест 10: Удалить город из избранного - город не в избранном
      */
+    //ошибка
     @Test
     void removeCityFromFavorites_WhenCityNotFavorite_ShouldReturnError() {
         // Given
@@ -302,7 +301,7 @@ class CityServiceImplTest {
         FavoriteDto result = cityService.removeCityFromFavorites(cityName);
 
         // Then
-        assertFalse(result.getIsFavorite());
+        assertFalse(result.getFavorite());
         assertEquals("Город отсутствует в списке любимых городов", result.getMessage());
 
         verify(cityRepository, never()).save(any());
@@ -378,6 +377,7 @@ class CityServiceImplTest {
     /**
      * Тест 15: Конвертация города в DTO (приватный метод)
      */
+    //ошибка
     @Test
     void convertToDto_ShouldConvertCorrectly() throws Exception {
         // Используем reflection для тестирования приватного метода

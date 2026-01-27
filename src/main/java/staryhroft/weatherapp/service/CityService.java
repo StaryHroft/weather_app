@@ -1,12 +1,9 @@
 package staryhroft.weatherapp.service;
 
-import staryhroft.weatherapp.dto.request.CityCreateDto;
 import staryhroft.weatherapp.dto.response.CityDto;
 import staryhroft.weatherapp.dto.response.FavoriteDto;
-import staryhroft.weatherapp.model.City;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CityService {
 

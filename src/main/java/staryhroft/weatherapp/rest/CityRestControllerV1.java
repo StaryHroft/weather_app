@@ -20,15 +20,13 @@ public class CityRestControllerV1 {
 
     private final CityService cityService;
 
-    //Получить все города из БД
-    //GET /cities
+    //Получить все города из БД GET /cities
     @GetMapping
     public ResponseEntity<List<CityDto>> getAllCitiesRequest() {
         return ResponseEntity.ok(cityService.getAllCitiesSorted());
     }
 
-    //Найти город по названию
-    //GET /cities/{name}
+    //Найти город по названию GET /cities/{name}
     @GetMapping("/{name}")
     public ResponseEntity<CityDto> getCityByNameRequest(@PathVariable String name) {
         CityDto cityDto = cityService.getWeatherByCityName(name);

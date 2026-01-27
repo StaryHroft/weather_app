@@ -7,7 +7,7 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import staryhroft.weatherapp.model.City;
+import staryhroft.weatherapp.entity.City;
 import staryhroft.weatherapp.repository.CityRepository;
 
 import java.math.BigDecimal;
@@ -33,7 +33,7 @@ class CityRestControllerV1IntegrationTest {
 
     @Autowired
     private CityRepository cityRepository;
-
+//ошибка
     @Test
     void integrationTest_GetAllCities() throws Exception {
         // Given: создаем тестовые данные в БД

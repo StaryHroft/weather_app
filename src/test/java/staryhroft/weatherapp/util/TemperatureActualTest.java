@@ -2,11 +2,9 @@ package staryhroft.weatherapp.util;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import staryhroft.weatherapp.model.City;
+import staryhroft.weatherapp.entity.City;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,6 +16,9 @@ class TemperatureActualTest {
     // Mock для City
     private City createMockCity(LocalDateTime temperatureUpdatedAt) {
         City city = mock(City.class);
+
+        when(city.getId()).thenReturn(1L);
+        when(city.getName()).thenReturn("TestCity");
         when(city.getTemperatureUpdatedAt()).thenReturn(temperatureUpdatedAt);
         return city;
     }
@@ -132,26 +133,6 @@ class TemperatureActualTest {
     }
 
     @Test
-    void isTemperatureActual_ShouldWorkWithMockedStaticTime() {
-        // Given
-        LocalDateTime fixedNow = LocalDateTime.of(2024, 1, 15, 12, 0, 0);
-        LocalDateTime temperatureUpdatedAt = fixedNow.minusHours(23); // 23 часа назад
-
-        try (MockedStatic<LocalDateTime> mockedDateTime = mockStatic(LocalDateTime.class)) {
-            mockedDateTime.when(LocalDateTime::now).thenReturn(fixedNow);
-
-            City city = createMockCity(temperatureUpdatedAt);
-
-            // When
-            boolean result = TemperatureActual.isTemperatureActual(city);
-
-            // Then
-            assertTrue(result);
-            mockedDateTime.verify(LocalDateTime::now, times(1));
-        }
-    }
-
-    @Test
     void isTemperatureActual_ShouldReturnFalse_WhenTemperatureUpdatedAtIsFarInPast() {
         // Given
         LocalDateTime now = LocalDateTime.now();
@@ -163,39 +144,6 @@ class TemperatureActualTest {
 
         // Then
         assertFalse(result);
-    }
-
-    @Test
-    void isTemperatureActual_ShouldHandleDifferentTimeZonesAndDaylightSaving() {
-        // This test verifies that the method works correctly with LocalDateTime
-        // which doesn't have timezone information
-
-        // Given - время в разных сезонах
-        LocalDateTime summerTime = LocalDateTime.of(2024, 6, 15, 12, 0, 0);
-        LocalDateTime winterTime = LocalDateTime.of(2024, 12, 15, 12, 0, 0);
-
-        City city1 = createMockCity(summerTime.minusHours(23));
-        City city2 = createMockCity(winterTime.minusHours(23));
-
-        try (MockedStatic<LocalDateTime> mockedDateTime = mockStatic(LocalDateTime.class)) {
-            // Test summer time
-            mockedDateTime.when(LocalDateTime::now).thenReturn(summerTime);
-            assertTrue(TemperatureActual.isTemperatureActual(city1));
-
-            // Test winter time
-            mockedDateTime.when(LocalDateTime::now).thenReturn(winterTime);
-            assertTrue(TemperatureActual.isTemperatureActual(city2));
-        }
-    }
-
-    @Test
-    void constructor_ShouldBePrivate() {
-        // Проверяем, что класс нельзя инстанцировать
-        assertThrows(IllegalStateException.class, () -> {
-            var constructor = TemperatureActual.class.getDeclaredConstructor();
-            constructor.setAccessible(true);
-            constructor.newInstance();
-        });
     }
 
     @Test

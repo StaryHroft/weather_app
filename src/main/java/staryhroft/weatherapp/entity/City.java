@@ -1,10 +1,8 @@
-package staryhroft.weatherapp.model;
+package staryhroft.weatherapp.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,9 +11,11 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cities")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
-@Builder()
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,7 @@ public class City {
     private BigDecimal temperature;
 
     @Column(name = "is_favorite", nullable = false)
-    private boolean favorite = false;
+    private Boolean favorite = false;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
@@ -47,9 +47,7 @@ public class City {
     private LocalDateTime temperatureUpdatedAt;
 
 
-    public City() {}
-
-    protected City(Long id, String name, BigDecimal temperature, boolean favorite) {
+    protected City(Long id, String name, BigDecimal temperature, Boolean favorite) {
         this.id = id;
         this.name = name;
         this.temperature = temperature;
@@ -62,18 +60,6 @@ public class City {
         this.favorite = false;
     }
 
-    public City(Long id, String name, BigDecimal temperature, boolean favorite,
-                LocalDateTime createdAt, LocalDateTime updatedAt,
-                LocalDateTime lastWeatherUpdate, LocalDateTime temperatureUpdatedAt) {
-        this.id = id;
-        this.name = name;
-        this.temperature = temperature;
-        this.favorite = favorite;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.lastWeatherUpdate = lastWeatherUpdate;
-        this.temperatureUpdatedAt = temperatureUpdatedAt;
-    }
 
     public boolean getFavorite() {
         return favorite;
@@ -90,5 +76,13 @@ public class City {
 
     public void setWindSpeed(double v) {
 
+    }
+    public void setTemperature(BigDecimal temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setTemperature(Double temperature) {
+        setTemperature(temperature != null ?
+                BigDecimal.valueOf(temperature) : null);
     }
 }

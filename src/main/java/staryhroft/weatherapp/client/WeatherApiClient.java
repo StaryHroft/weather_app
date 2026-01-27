@@ -38,9 +38,13 @@ public class WeatherApiClient {
                         String errorMessage = "API вернуло ошибку: " + response.getStatusCode();
 
                         // Можно прочитать тело ошибки
-                        String responseBodyString = new String(response.getBody().readAllBytes());
-                        if (!responseBodyString.isEmpty()) {
-                            errorMessage += ". Тело ответа: " + responseBodyString;
+                        try {
+                            String responseBodyString = new String(response.getBody().readAllBytes());
+                            if (!responseBodyString.isEmpty()) {
+                                errorMessage += ". Тело ответа: " + responseBodyString;
+                            }
+                        } catch (Exception ioException) {
+                            // Игнорируем ошибки чтения тела
                         }
 
                         throw new WeatherApiException(errorMessage);
@@ -50,14 +54,18 @@ public class WeatherApiClient {
                 throw new WeatherApiException("Пустой ответ от API");
             }
 
-            WeatherApiResponse weatherResponse = mapToWeatherApiResponse(responseBody);
+            return mapToWeatherApiResponse(responseBody);
 
-            return weatherResponse;
-
-        } catch (RestClientException e) {
-            throw new WeatherApiException("Ошибка при обращении к API погоды: " + e.getMessage(), e);
+        } catch (Exception e) {  // Ловим ВСЕ исключения
+            // Проверяем, не является ли это уже WeatherApiException
+            if (e instanceof WeatherApiException) {
+                throw (WeatherApiException) e;
+            }
+            throw new WeatherApiException("Ошибка при обращении к API погоды: " + e.getMessage(), 500);
         }
+
     }
+
 
     private String buildWeatherApiUrl(String cityName) {
         return UriComponentsBuilder.fromUriString(apiUrl)
@@ -74,4 +82,5 @@ public class WeatherApiClient {
         response.setTemperature(apiResponse.getMain().getTemp());
         return response;
     }
+
 }

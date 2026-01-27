@@ -1,6 +1,6 @@
 package staryhroft.weatherapp.util;
 
-import staryhroft.weatherapp.model.City;
+import staryhroft.weatherapp.entity.City;
 import staryhroft.weatherapp.service.WeatherApiResponse;
 
 import java.time.LocalDateTime;
@@ -13,5 +13,6 @@ public class TemperatureUpdate {
     }
 
     private TemperatureUpdate() {
+        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 }
