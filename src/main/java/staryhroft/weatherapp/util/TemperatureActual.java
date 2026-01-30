@@ -9,17 +9,16 @@ public class TemperatureActual {
     private static final long TEMPERATURE_VALID_HOURS = 24;
 
     public static boolean isTemperatureActual(City city) {
-        if (city.getTemperatureUpdatedAt() == null) {
-            return false;
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime updatedAt = city.getUpdatedAt();
+
+            // Если время обновления не установлено
+            if (updatedAt == null) {
+                return false;
+            }
+            Duration duration = Duration.between(updatedAt, now);
+            return duration.toHours() < TEMPERATURE_VALID_HOURS;
         }
-
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime updatedAt = city.getTemperatureUpdatedAt();
-
-        Duration duration = Duration.between(updatedAt, now);
-        // Используйте toMinutes() для большей точности
-        return duration.toMinutes() < (TEMPERATURE_VALID_HOURS * 60L);
-    }
 
     private TemperatureActual() {
     }

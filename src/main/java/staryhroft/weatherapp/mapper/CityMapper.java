@@ -16,8 +16,8 @@ public class CityMapper {
         cityDto.setId(city.getId());
         cityDto.setName(city.getName());
         cityDto.setTemperature(city.getTemperature());
-        cityDto.setFavorite(city.getFavorite());
-        cityDto.setTemperatureUpdatedAt(city.getTemperatureUpdatedAt());
+        cityDto.setStatus(city.getStatus());
+        cityDto.setUpdatedAt(city.getUpdatedAt());
 
         return cityDto;
     }

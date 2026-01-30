@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import staryhroft.weatherapp.client.WeatherApiClient;
 import staryhroft.weatherapp.dto.response.CityDto;
 import staryhroft.weatherapp.dto.response.FavoriteDto;
+import staryhroft.weatherapp.entity.Status;
 import staryhroft.weatherapp.exception.CityNotFoundException;
 import staryhroft.weatherapp.mapper.CityMapper;
 import staryhroft.weatherapp.entity.City;
@@ -51,8 +52,8 @@ public class CityServiceImpl implements CityService {
         cityDto.setId(city.getId());
         cityDto.setName(city.getName());
         cityDto.setTemperature(city.getTemperature());
-        cityDto.setFavorite(city.getFavorite());
-        cityDto.setTemperatureUpdatedAt(city.getTemperatureUpdatedAt());
+        cityDto.setStatus(city.getStatus());
+        cityDto.setUpdatedAt(city.getUpdatedAt());
 
         return cityDto;
     }
@@ -60,11 +61,11 @@ public class CityServiceImpl implements CityService {
     //Получить информацию о городе
     @Override
     @Transactional
-    public CityDto getWeatherByCityName(String cityName) {
+    public CityDto getByCityName(String cityName) {
         City city = cityRepository.findByName(cityName);
         if (city != null && isTemperatureActual(city)) {
             return cityMapper.toDto(city);
-        } else {
+        }
             WeatherApiResponse apiResponse = weatherApiClient.fetchWeather(cityName);
 
             if (city == null) {
@@ -76,8 +77,6 @@ public class CityServiceImpl implements CityService {
             }
             return cityMapper.toDto(city);
             }
-        }
-
 
     //Передать один из имеющихся городов в любимые города
     @Override
@@ -89,17 +88,17 @@ public class CityServiceImpl implements CityService {
             throw new CityNotFoundException("Город '" + cityName + "' не найден");
         }
 
-        if (city.getFavorite()) {
+        if (city.getStatus().equals(Status.FAVORITE)) {
             return FavoriteDto.error("Город уже в избранном");
         }
-        long favoriteCount = cityRepository.countByFavoriteTrue();
+        long favoriteCount = cityRepository.countByFavorite();
         if (favoriteCount >= MAX_FAVORITES) {
             return FavoriteDto.error(
                     String.format("Нельзя добавить более %d городов в избранное. " +
                             "Текущее количество: %d. Удалите город из избранного", MAX_FAVORITES, favoriteCount)
             );
         }
-        city.setFavorite(true);
+        city.setStatus(Status.FAVORITE);
         city.setUpdatedAt(LocalDateTime.now());
         cityRepository.save(city);
 
@@ -116,11 +115,11 @@ public class CityServiceImpl implements CityService {
             throw new CityNotFoundException(cityName);
         }
 
-        if (!city.getFavorite()) {
+        if (city.getStatus().equals(Status.NOT_FAVORITE)) {
             return FavoriteDto.error("Город отсутствует в списке любимых городов");
         }
 
-        city.setFavorite(false);
+        city.setStatus(Status.NOT_FAVORITE);
         city.setUpdatedAt(LocalDateTime.now());
         cityRepository.save(city);
 

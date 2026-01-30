@@ -11,7 +11,7 @@ public interface CityService {
     List<CityDto> getAllCitiesSorted();
 
     //Получить информацию о городе
-    CityDto getWeatherByCityName(String name);
+    CityDto getByCityName(String name);
 
     //Добавить город из списка в Любимые города
     FavoriteDto setCityAsFavorite(String cityName);

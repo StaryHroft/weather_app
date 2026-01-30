@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import staryhroft.weatherapp.entity.Status;
 
 @Data
 @Builder
@@ -15,14 +16,14 @@ public class FavoriteDto {
     private String message;
     private Long cityId;
     private String cityName;
-    private Boolean favorite;
+    private Status status;
 
     public static FavoriteDto added(Long cityId, String cityName) {
         return new FavoriteDto(
                 "Город добавлен в список любимых городов",
                 cityId,
                 cityName,
-                true
+                Status.FAVORITE
         );
     }
 
@@ -31,7 +32,7 @@ public class FavoriteDto {
                 "Город удален из списка любимых городов",
                 cityId,
                 cityName,
-                false
+                Status.NOT_FAVORITE
         );
     }
 

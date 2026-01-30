@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 public class TemperatureUpdate {
     public static void updateCityTemperature(City city, WeatherApiResponse apiResponse) {
         city.setTemperature(apiResponse.getTemperature());
-        city.setTemperatureUpdatedAt(LocalDateTime.now());
         city.setUpdatedAt(LocalDateTime.now());
     }
 

@@ -2,6 +2,7 @@ package staryhroft.weatherapp.rest;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.List;
 @RequestMapping("/cities")
 @RequiredArgsConstructor
 public class CityRestControllerV1 {
-
+    @Autowired
     private final CityService cityService;
 
     //Получить все города из БД GET /cities
@@ -26,10 +27,10 @@ public class CityRestControllerV1 {
         return ResponseEntity.ok(cityService.getAllCitiesSorted());
     }
 
-    //Найти город по названию GET /cities/{name}
-    @GetMapping("/{name}")
-    public ResponseEntity<CityDto> getCityByNameRequest(@PathVariable String name) {
-        CityDto cityDto = cityService.getWeatherByCityName(name);
+    //Найти город по названию GET /cities/{cityName}
+    @GetMapping("/{cityName}")
+    public ResponseEntity<CityDto> getCityByNameRequest(@PathVariable String cityName) {
+        CityDto cityDto = cityService.getByCityName(cityName);
         return ResponseEntity.ok(cityDto);
     }
 
@@ -40,7 +41,7 @@ public class CityRestControllerV1 {
     }
 
 
-//Убрать город в из списка любимых городов PATCH /cities/{cityName}/favorite/remove
+    //Убрать город в из списка любимых городов PATCH /cities/{cityName}/favorite/remove
     @PatchMapping("/{cityName}/favorite/remove")
     public ResponseEntity<FavoriteDto> removeCityFromFavoritesRequest(@PathVariable String cityName) {
         return ResponseEntity.ok(cityService.removeCityFromFavorites(cityName));

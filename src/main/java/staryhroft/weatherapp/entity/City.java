@@ -27,62 +27,40 @@ public class City {
     @Column(name = "city_name", nullable = false, length = 50, unique = true)
     private String name;
 
-    @Column(name = "temperature", precision = 4, scale = 1, nullable = false)
-    private BigDecimal temperature;
+    @Column(nullable = false)
+    private Double temperature;
 
-    @Column(name = "is_favorite", nullable = false)
-    private Boolean favorite = false;
+    @Column(nullable = false)
+    private Status status;
 
     @CreationTimestamp
-    @Column(name = "created_at", updatable = false)
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @Column(name = "last_weather_update")
-    private LocalDateTime lastWeatherUpdate;
-
-    private LocalDateTime temperatureUpdatedAt;
-
-
-    protected City(Long id, String name, BigDecimal temperature, Boolean favorite) {
+    protected City(Long id, String name, Double temperature, Status status) {
         this.id = id;
         this.name = name;
         this.temperature = temperature;
-        this.favorite = favorite;
+        this.status = status;
     }
 
-    public City(String name, BigDecimal temperature) {
+    public City(String name, Double temperature) {
         this.name = name;
         this.temperature = temperature;
-        this.favorite = false;
+        this.status = Status.NOT_FAVORITE;
     }
-
-
-    public boolean getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(Boolean o) {
-    }
-
-    public void setWeatherDescription(String ясно) {
-    }
-
-    public void setHumidity(int i) {
-    }
-
-    public void setWindSpeed(double v) {
-
-    }
-    public void setTemperature(BigDecimal temperature) {
-        this.temperature = temperature;
-    }
-
-    public void setTemperature(Double temperature) {
-        setTemperature(temperature != null ?
-                BigDecimal.valueOf(temperature) : null);
+    //статус по умолчанию
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        if (updatedAt == null) {
+            updatedAt = createdAt;
+        }
+        if (status == null) {
+            status = Status.NOT_FAVORITE;
+        }
     }
 }

@@ -15,6 +15,6 @@ public class OpenWeatherMapResponse {
     @Data
     public static class Main {
         @JsonProperty("temp")
-        private BigDecimal temp;           // температура
+        private Double temp;           // температура
     }
 }

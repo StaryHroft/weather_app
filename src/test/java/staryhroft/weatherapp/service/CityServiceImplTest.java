@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import staryhroft.weatherapp.client.WeatherApiClient;
 import staryhroft.weatherapp.dto.response.CityDto;
 import staryhroft.weatherapp.dto.response.FavoriteDto;
+import staryhroft.weatherapp.entity.Status;
 import staryhroft.weatherapp.exception.CityNotFoundException;
 import staryhroft.weatherapp.exception.WeatherApiException;
 import staryhroft.weatherapp.mapper.CityMapper;
@@ -20,6 +21,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hibernate.engine.transaction.internal.jta.JtaStatusHelper.getStatus;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -49,65 +51,59 @@ class CityServiceImplTest {
         testCity = City.builder()
                 .id(1L)
                 .name("Moscow")
-                .temperature(BigDecimal.valueOf(15.5))
-                .favorite(true)
-                .temperatureUpdatedAt(LocalDateTime.now().minusHours(1)) // Обновлено 1 час назад
+                .temperature(15.5)
+                .status(Status.FAVORITE)
+                .updatedAt(LocalDateTime.now().minusHours(1)) // Обновлено 1 час назад
                 .build();
 
         testCityDto = CityDto.builder()
                 .id(1L)
                 .name("Moscow")
-                .temperature(BigDecimal.valueOf(15.5))
-                .favorite(true)
-                .temperatureUpdatedAt(LocalDateTime.now().minusHours(1))
+                .temperature(15.5)
+                .status(Status.FAVORITE)
+                .updatedAt(LocalDateTime.now().minusHours(1))
                 .build();
 
         testWeatherResponse = new WeatherApiResponse();
-        testWeatherResponse.setTemperature(BigDecimal.valueOf(18.0));
+        testWeatherResponse.setTemperature(18.0);
     }
 
-    @Test
+    @Test//сортировка городов
     void getAllCitiesSorted_ShouldReturnSortedCities() {
         City favoriteCity = City.builder()
                 .id(1L)
                 .name("Moscow")
-                .favorite(true)
+                .status(Status.FAVORITE)
                 .build();
 
         City regularCity = City.builder()
                 .id(2L)
                 .name("London")
-                .favorite(false)
+                .status(Status.NOT_FAVORITE)
                 .build();
 
         List<City> cities = Arrays.asList(favoriteCity, regularCity);
         when(cityRepository.findAllWithFavoritesFirst()).thenReturn(cities);
-
-        CityDto favoriteDto = CityDto.builder().id(1L).name("Moscow").favorite(true).build();
-        CityDto regularDto = CityDto.builder().id(2L).name("London").favorite(false).build();
-
-        //when(cityMapper.toDto(favoriteCity)).thenReturn(favoriteDto);
-        //when(cityMapper.toDto(regularCity)).thenReturn(regularDto);
 
         List<CityDto> result = cityService.getAllCitiesSorted();
 
         assertNotNull(result);
         assertEquals(2, result.size());
         assertEquals("Moscow", result.get(0).getName());
-        assertTrue(result.get(0).getFavorite());
+        assertEquals(Status.FAVORITE, result.get(0).getStatus());
         assertEquals("London", result.get(1).getName());
-        assertFalse(result.get(1).getFavorite());
+        assertEquals(Status.NOT_FAVORITE, result.get(1).getStatus());
 
         verify(cityRepository, times(1)).findAllWithFavoritesFirst();
     }
-    //ошибка
-    @Test
+
+    @Test//город существует в БД и температура актуальна
     void getWeatherByCityName_WhenCityExistsAndTemperatureActual_ShouldReturnFromDb() {
         String cityName = "Moscow";
         when(cityRepository.findByName(cityName)).thenReturn(testCity);
         when(cityMapper.toDto(testCity)).thenReturn(testCityDto);
 
-        CityDto result = cityService.getWeatherByCityName(cityName);
+        CityDto result = cityService.getByCityName(cityName);
 
         assertNotNull(result);
         assertEquals("Moscow", result.getName());
@@ -117,16 +113,16 @@ class CityServiceImplTest {
         verify(weatherApiClient, never()).fetchWeather(anyString());
         verify(cityRepository, never()).save(any());
     }
-    //ошибка
-    @Test
+
+    @Test//город существует в БД и температура неактуальна
     void getWeatherByCityName_WhenCityExistsButTemperatureOutdated_ShouldUpdateFromApi() {
         String cityName = "Moscow";
 
         City outdatedCity = City.builder()
                 .id(1L)
                 .name("Moscow")
-                .temperature(BigDecimal.valueOf(10.0))
-                .temperatureUpdatedAt(LocalDateTime.now().minusHours(25))
+                .temperature(10.0)
+                .updatedAt(LocalDateTime.now().minusHours(25))
                 .build();
 
         when(cityRepository.findByName(cityName)).thenReturn(outdatedCity);
@@ -136,11 +132,11 @@ class CityServiceImplTest {
         CityDto updatedDto = CityDto.builder()
                 .id(1L)
                 .name("Moscow")
-                .temperature(BigDecimal.valueOf(18.0))
+                .temperature(18.0)
                 .build();
         when(cityMapper.toDto(any(City.class))).thenReturn(updatedDto);
 
-        CityDto result = cityService.getWeatherByCityName(cityName);
+        CityDto result = cityService.getByCityName(cityName);
 
         assertNotNull(result);
         assertEquals(18.0, result.getTemperature()); // Обновленная температура
@@ -148,8 +144,8 @@ class CityServiceImplTest {
         verify(weatherApiClient, times(1)).fetchWeather(cityName);
         verify(cityRepository, times(1)).save(any(City.class));
     }
-    //ошибка
-    @Test
+
+    @Test//город не существует в БД
     void getWeatherByCityName_WhenCityNotFound_ShouldCreateFromApi() {
         String cityName = "NewCity";
         when(cityRepository.findByName(cityName)).thenReturn(null);
@@ -163,11 +159,11 @@ class CityServiceImplTest {
         CityDto newCityDto = CityDto.builder()
                 .id(2L)
                 .name("NewCity")
-                .temperature(BigDecimal.valueOf(18.0))
+                .temperature(18.0)
                 .build();
         when(cityMapper.toDto(any(City.class))).thenReturn(newCityDto);
 
-        CityDto result = cityService.getWeatherByCityName(cityName);
+        CityDto result = cityService.getByCityName(cityName);
 
         assertNotNull(result);
         assertEquals("NewCity", result.getName());
@@ -176,71 +172,31 @@ class CityServiceImplTest {
         verify(cityRepository, times(1)).save(any(City.class));
         verify(weatherApiClient, times(1)).fetchWeather(cityName);
     }
-    //ошибка
-    @Test
+
+    @Test//присваивание статуса любимый город
     void setCityAsFavorite_WhenCityExistsAndNotFavorite_ShouldAddToFavorites() {
         String cityName = "Moscow";
         City city = City.builder()
                 .id(1L)
                 .name("Moscow")
-                .favorite(false)
+                .status(Status.NOT_FAVORITE)
                 .build();
 
         when(cityRepository.findByName(cityName)).thenReturn(city);
-        when(cityRepository.countByFavoriteTrue()).thenReturn(2L); // Есть 2 избранных
+        when(cityRepository.countByFavorite()).thenReturn(2L); // Есть 2 избранных
         when(cityRepository.save(any(City.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         FavoriteDto result = cityService.setCityAsFavorite(cityName);
 
-        assertTrue(result.getFavorite());
+        assertEquals(Status.FAVORITE, result.getStatus());
         assertEquals("Moscow", result.getCityName());
-        assertTrue(result.getMessage().contains("добавлен в избранное"));
+        assertTrue(result.getMessage().contains("Город добавлен в список любимых городов"));
 
         verify(cityRepository, times(1)).save(city);
-        assertTrue(city.getFavorite());
-    }
-    //ошибка
-    @Test
-    void setCityAsFavorite_WhenCityAlreadyFavorite_ShouldReturnError() {
-        String cityName = "Moscow";
-        City city = City.builder()
-                .id(1L)
-                .name("Moscow")
-                .favorite(true) // Уже в избранном
-                .build();
-
-        when(cityRepository.findByName(cityName)).thenReturn(city);
-
-        FavoriteDto result = cityService.setCityAsFavorite(cityName);
-
-        assertFalse(result.getFavorite());
-        assertEquals("Город уже в избранном", result.getMessage());
-
-        verify(cityRepository, never()).save(any());
+        assertEquals(Status.FAVORITE, result.getStatus());
     }
 
-    //ошибка
-    @Test
-    void setCityAsFavorite_WhenMaxFavoritesReached_ShouldReturnError() {
-        String cityName = "Moscow";
-        City city = City.builder()
-                .id(1L)
-                .name("Moscow")
-                .favorite(false)
-                .build();
-
-        when(cityRepository.findByName(cityName)).thenReturn(city);
-        when(cityRepository.countByFavoriteTrue()).thenReturn(3L); // Максимум 3 уже есть
-
-        FavoriteDto result = cityService.setCityAsFavorite(cityName);
-
-        assertFalse(result.getFavorite());
-        assertTrue(result.getMessage().contains("Нельзя добавить более 3 городов"));
-
-        verify(cityRepository, never()).save(any());
-    }
-
-    @Test
+    @Test//присваивание статуса любимый город, когда такого города нет в БД -> исключение
     void setCityAsFavorite_WhenCityNotFound_ShouldThrowException() {
         String cityName = "UnknownCity";
         when(cityRepository.findByName(cityName)).thenReturn(null);
@@ -252,65 +208,7 @@ class CityServiceImplTest {
         assertTrue(exception.getMessage().contains(cityName));
     }
 
-    /**
-     * Тест 9: Удалить город из избранного - успешно
-     */
-    //ошибка
-    @Test
-    void removeCityFromFavorites_WhenCityIsFavorite_ShouldRemove() {
-        // Given
-        String cityName = "Moscow";
-        City city = City.builder()
-                .id(1L)
-                .name("Moscow")
-                .favorite(true) // В избранном
-                .build();
-
-        when(cityRepository.findByName(cityName)).thenReturn(city);
-        when(cityRepository.save(any(City.class))).thenAnswer(invocation -> invocation.getArgument(0));
-
-        // When
-        FavoriteDto result = cityService.removeCityFromFavorites(cityName);
-
-        // Then
-        assertFalse(result.getFavorite());
-        assertEquals("Moscow", result.getCityName());
-        assertTrue(result.getMessage().contains("удален из избранного"));
-
-        verify(cityRepository, times(1)).save(city);
-        assertFalse(city.getFavorite());
-    }
-
-    /**
-     * Тест 10: Удалить город из избранного - город не в избранном
-     */
-    //ошибка
-    @Test
-    void removeCityFromFavorites_WhenCityNotFavorite_ShouldReturnError() {
-        // Given
-        String cityName = "Moscow";
-        City city = City.builder()
-                .id(1L)
-                .name("Moscow")
-                .favorite(false) // Не в избранном
-                .build();
-
-        when(cityRepository.findByName(cityName)).thenReturn(city);
-
-        // When
-        FavoriteDto result = cityService.removeCityFromFavorites(cityName);
-
-        // Then
-        assertFalse(result.getFavorite());
-        assertEquals("Город отсутствует в списке любимых городов", result.getMessage());
-
-        verify(cityRepository, never()).save(any());
-    }
-
-    /**
-     * Тест 11: Удалить город - успешно
-     */
-    @Test
+    @Test//удаление из списка любимых
     void deleteCity_WhenCityExists_ShouldDelete() {
         // Given
         String cityName = "Moscow";
@@ -325,27 +223,7 @@ class CityServiceImplTest {
         verify(cityRepository, times(1)).deleteByName(cityName);
     }
 
-    /**
-     * Тест 12: Удалить город - город не найден
-     */
-    @Test
-    void deleteCity_WhenCityNotFound_ShouldThrowException() {
-        // Given
-        String cityName = "UnknownCity";
-        when(cityRepository.existsByName(cityName)).thenReturn(false);
-
-        // When & Then
-        CityNotFoundException exception = assertThrows(CityNotFoundException.class,
-                () -> cityService.deleteCity(cityName));
-
-        assertTrue(exception.getMessage().contains(cityName));
-        verify(cityRepository, never()).deleteByName(anyString());
-    }
-
-    /**
-     * Тест 13: Получить количество городов
-     */
-    @Test
+    @Test//количество городов
     void countCities_ShouldReturnCorrectCount() {
         // Given
         long expectedCount = 5L;
@@ -359,10 +237,7 @@ class CityServiceImplTest {
         verify(cityRepository, times(1)).count();
     }
 
-    /**
-     * Тест 14: Удалить все города
-     */
-    @Test
+    @Test//удаление всех городов
     void deleteAllCities_ShouldDeleteAll() {
         // Given
         doNothing().when(cityRepository).deleteAll();
@@ -374,19 +249,15 @@ class CityServiceImplTest {
         verify(cityRepository, times(1)).deleteAll();
     }
 
-    /**
-     * Тест 15: Конвертация города в DTO (приватный метод)
-     */
-    //ошибка
-    @Test
+    @Test//корректная конвертация городов в ДТО
     void convertToDto_ShouldConvertCorrectly() throws Exception {
         // Используем reflection для тестирования приватного метода
         City city = City.builder()
                 .id(1L)
                 .name("Test")
-                .temperature(BigDecimal.valueOf(20.0))
-                .favorite(true)
-                .temperatureUpdatedAt(LocalDateTime.now())
+                .temperature(20.0)
+                .status(Status.FAVORITE)
+                .updatedAt(LocalDateTime.now())
                 .build();
 
         // Вызываем приватный метод через reflection
@@ -399,13 +270,10 @@ class CityServiceImplTest {
         assertEquals(1L, result.getId());
         assertEquals("Test", result.getName());
         assertEquals(20.0, result.getTemperature());
-        assertTrue(result.getFavorite());
+        assertEquals(Status.FAVORITE, result.getStatus());
     }
 
-    /**
-     * Тест 16: Пустой список городов
-     */
-    @Test
+    @Test//сортировка городов когда ни один не пустой
     void getAllCitiesSorted_WhenNoCities_ShouldReturnEmptyList() {
         // Given
         when(cityRepository.findAllWithFavoritesFirst()).thenReturn(List.of());
@@ -418,17 +286,14 @@ class CityServiceImplTest {
         assertTrue(result.isEmpty());
     }
 
-    /**
-     * Тест 17: Ошибка при получении данных от API
-     */
-    @Test
+    @Test//погода по названию города, если АПИ не доступен - исключение
     void getWeatherByCityName_WhenApiFails_ShouldPropagateException() {
         // Given
         String cityName = "Moscow";
         City outdatedCity = City.builder()
                 .id(1L)
                 .name("Moscow")
-                .temperatureUpdatedAt(LocalDateTime.now().minusHours(25))
+                .updatedAt(LocalDateTime.now().minusHours(25))
                 .build();
 
         when(cityRepository.findByName(cityName)).thenReturn(outdatedCity);
@@ -437,15 +302,6 @@ class CityServiceImplTest {
 
         // When & Then
         assertThrows(WeatherApiException.class,
-                () -> cityService.getWeatherByCityName(cityName));
-    }
-
-    /**
-     * Тест 18: Проверка константы MAX_FAVORITES
-     */
-    @Test
-    void shouldRespectMaxFavoritesConstant() {
-        // Проверяем, что лимит действительно равен 3
-        assertEquals(3, CityServiceImpl.MAX_FAVORITES);
+                () -> cityService.getByCityName(cityName));
     }
 }

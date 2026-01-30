@@ -10,7 +10,6 @@ public class CreateCityFromApi {
         City city = new City();
         city.setName(cityName);
         city.setTemperature(apiResponse.getTemperature());
-        city.setTemperatureUpdatedAt(LocalDateTime.now());
         city.setCreatedAt(LocalDateTime.now());
         city.setUpdatedAt(LocalDateTime.now());
         return city;

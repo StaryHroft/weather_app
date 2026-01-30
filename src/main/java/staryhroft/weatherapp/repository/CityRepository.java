@@ -11,7 +11,7 @@ import java.util.List;
 public interface CityRepository extends JpaRepository<City, Long> {
 
     // Показать города: сначала избранные (по id DESC), потом остальные (по id DESC)
-    @Query("SELECT c FROM City c ORDER BY c.favorite DESC, c.id DESC")
+    @Query("SELECT c FROM City c ORDER BY c.status DESC, c.id DESC")
     List<City> findAllWithFavoritesFirst();
 
     // Найти город по названию
@@ -23,6 +23,6 @@ public interface CityRepository extends JpaRepository<City, Long> {
     //Удалить город по названию
     void deleteByName(String name);
 
-    @Query("SELECT COUNT(c) FROM City c WHERE c.favorite = true")
-    long countByFavoriteTrue();
+    @Query("SELECT COUNT(c) FROM City c WHERE c.status = staryhroft.weatherapp.entity.Status.FAVORITE")
+    long countByFavorite();
 }

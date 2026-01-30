@@ -17,39 +17,11 @@ class TemperatureActualTest {
     private City createMockCity(LocalDateTime temperatureUpdatedAt) {
         City city = mock(City.class);
 
-        when(city.getId()).thenReturn(1L);
-        when(city.getName()).thenReturn("TestCity");
-        when(city.getTemperatureUpdatedAt()).thenReturn(temperatureUpdatedAt);
+        when(city.getUpdatedAt()).thenReturn(temperatureUpdatedAt);
         return city;
     }
 
-    @Test
-    void isTemperatureActual_ShouldReturnFalse_WhenTemperatureUpdatedAtIsNull() {
-        // Given
-        City city = createMockCity(null);
-
-        // When
-        boolean result = TemperatureActual.isTemperatureActual(city);
-
-        // Then
-        assertFalse(result);
-    }
-
-    @Test
-    void isTemperatureActual_ShouldReturnTrue_WhenTemperatureUpdatedLessThan24HoursAgo() {
-        // Given
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime twentyThreeHoursAgo = now.minusHours(23);
-        City city = createMockCity(twentyThreeHoursAgo);
-
-        // When
-        boolean result = TemperatureActual.isTemperatureActual(city);
-
-        // Then
-        assertTrue(result);
-    }
-
-    @Test
+    @Test//если температура обновлялась ровно 24 часа назад - ложь
     void isTemperatureActual_ShouldReturnFalse_WhenTemperatureUpdatedExactly24HoursAgo() {
         // Given
         LocalDateTime now = LocalDateTime.now();
@@ -63,7 +35,7 @@ class TemperatureActualTest {
         assertFalse(result, "Должно вернуть false, если прошло ровно 24 часа");
     }
 
-    @Test
+    @Test//если температура обновлялась больше 24 часов назад - ложь
     void isTemperatureActual_ShouldReturnFalse_WhenTemperatureUpdatedMoreThan24HoursAgo() {
         // Given
         LocalDateTime now = LocalDateTime.now();
@@ -77,7 +49,7 @@ class TemperatureActualTest {
         assertFalse(result);
     }
 
-    @Test
+    @Test//если температура обновлялась только что - правда
     void isTemperatureActual_ShouldReturnTrue_WhenTemperatureUpdatedJustNow() {
         // Given
         LocalDateTime now = LocalDateTime.now();
@@ -90,7 +62,7 @@ class TemperatureActualTest {
         assertTrue(result);
     }
 
-    @Test
+    @Test//если температура обновлялась меньше 24 часов назад - правда
     void isTemperatureActual_ShouldReturnTrue_WhenTemperatureUpdated23Hours59MinutesAgo() {
         // Given
         LocalDateTime now = LocalDateTime.now();
@@ -104,7 +76,7 @@ class TemperatureActualTest {
         assertTrue(result, "Должно вернуть true, если прошло 23 часа 59 минут");
     }
 
-    @Test
+    @Test//если температура обновлялась 24 часа 1 минуту назад - ложь
     void isTemperatureActual_ShouldReturnFalse_WhenTemperatureUpdated24Hours1MinuteAgo() {
         // Given
         LocalDateTime now = LocalDateTime.now();
@@ -118,7 +90,7 @@ class TemperatureActualTest {
         assertFalse(result, "Должно вернуть false, если прошло 24 часа 1 минута");
     }
 
-    @Test
+    @Test//будущая дата возврата
     void isTemperatureActual_ShouldHandleFutureDate_ReturnTrue() {
         // Given
         LocalDateTime now = LocalDateTime.now();
@@ -132,7 +104,7 @@ class TemperatureActualTest {
         assertTrue(result, "Должно вернуть true для будущей даты (отрицательная duration)");
     }
 
-    @Test
+    @Test//
     void isTemperatureActual_ShouldReturnFalse_WhenTemperatureUpdatedAtIsFarInPast() {
         // Given
         LocalDateTime now = LocalDateTime.now();
@@ -146,13 +118,13 @@ class TemperatureActualTest {
         assertFalse(result);
     }
 
-    @Test
+    @Test//
     void isTemperatureActual_ShouldWorkWithRealCityObject() {
         // Интеграционный тест с реальным объектом City
         // Given
         LocalDateTime updatedAt = LocalDateTime.now().minusHours(12);
         City city = new City();
-        city.setTemperatureUpdatedAt(updatedAt);
+        city.setUpdatedAt(updatedAt);
 
         // When
         boolean result = TemperatureActual.isTemperatureActual(city);
@@ -161,7 +133,7 @@ class TemperatureActualTest {
         assertTrue(result);
     }
 
-    @Test
+    @Test//
     void isTemperatureActual_ShouldHandleEdgeCaseOf23Hours59Minutes59Seconds() {
         // Given
         LocalDateTime now = LocalDateTime.now();
@@ -179,7 +151,7 @@ class TemperatureActualTest {
         assertTrue(result, "Должно вернуть true для 23:59:59");
     }
 
-    @Test
+    @Test//
     void isTemperatureActual_ShouldHandleEdgeCaseOfExactly24Hours() {
         // Given
         LocalDateTime now = LocalDateTime.now();

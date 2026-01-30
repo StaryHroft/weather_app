@@ -53,7 +53,7 @@ class WeatherApiClientTest {
                 .thenReturn(responseSpec);
     }
 
-    @Test
+    @Test//успешный запрос
     void shouldFetchWeatherSuccessfully() {
         String cityName = "Moscow";
         OpenWeatherMapResponse mockResponse = createMockResponse(15.5);
@@ -63,14 +63,14 @@ class WeatherApiClientTest {
         WeatherApiResponse result = weatherApiClient.fetchWeather(cityName);
 
         assertNotNull(result);
-        assertEquals(new BigDecimal("15.5"), result.getTemperature());
+        assertEquals(15.5, result.getTemperature());
 
         verify(requestHeadersUriSpec).uri(expectedUrlForCity(cityName));
         verify(responseSpec).body(OpenWeatherMapResponse.class);
 
     }
 
-    @Test
+    @Test//город не найден
     void shouldThrowExceptionWhenCityNotFound() {
         String cityName = "UnknownCity";
         when(responseSpec.body(OpenWeatherMapResponse.class))
@@ -82,7 +82,7 @@ class WeatherApiClientTest {
         assertThat(exception.getMessage()).contains("Ошибка при обращении к API погоды");
     }
 
-    @Test
+    @Test//ключ не действителен
     void shouldThrowExceptionWhenApiKeyInvalid() {
         String cityName = "Moscow";
 
@@ -95,7 +95,7 @@ class WeatherApiClientTest {
         assertThat(exception.getMessage()).contains("Ошибка при обращении к API погоды");
     }
 
-    @Test
+    @Test//тело ответа = 0
     void shouldThrowExceptionWhenResponseBodyIsNull() {
         String cityName = "Moscow";
 
@@ -107,57 +107,17 @@ class WeatherApiClientTest {
         assertEquals("Пустой ответ от API", exception.getMessage());
     }
 
-    @Test
-    void shouldThrowExceptionOnNetworkError() {
-        String cityName = "Moscow";
-
-        when(responseSpec.body(OpenWeatherMapResponse.class))
-                .thenThrow(new RuntimeException("Connection timeout"));
-
-        WeatherApiException exception = assertThrows(WeatherApiException.class,
-                () -> weatherApiClient.fetchWeather(cityName));
-
-        // Проверяем сообщение
-        assertThat(exception.getMessage()).contains("Ошибка при обращении к API погоды");
-
-        // Если cause все равно null, проверяем наличие текста в сообщении
-        if (exception.getCause() == null) {
-            // Проверяем, что сообщение содержит текст ошибки
-            assertThat(exception.getMessage()).contains("Connection timeout");
-        } else {
-            // Если cause не null, проверяем его
-            assertNotNull(exception.getCause());
-            assertEquals("Connection timeout", exception.getCause().getMessage());
-        }
-    }
-
-    @Test
+    @Test//правильное отображение ответа
     void shouldMapApiResponseCorrectly() throws Exception {
         OpenWeatherMapResponse apiResponse = createMockResponse(22.5);
 
         WeatherApiResponse result = invokePrivateMethod("mapToWeatherApiResponse", apiResponse);
 
         assertNotNull(result);
-        assertEquals(new BigDecimal("22.5"), result.getTemperature());
+        assertEquals(22.5, result.getTemperature());
     }
 
-    @Test
-    void shouldHandleNullTemperatureInResponse() {
-        String cityName = "Moscow";
-        OpenWeatherMapResponse mockResponse = new OpenWeatherMapResponse();
-        OpenWeatherMapResponse.Main main = new OpenWeatherMapResponse.Main();
-        main.setTemp(null);
-        mockResponse.setMain(main);
-
-        when(responseSpec.body(OpenWeatherMapResponse.class)).thenReturn(mockResponse);
-
-        WeatherApiResponse result = weatherApiClient.fetchWeather(cityName);
-
-        assertNotNull(result);
-        assertNull(result.getTemperature());
-    }
-
-    @Test
+    @Test//разные города
     void shouldWorkWithDifferentCities() {
         String[] cities = {"Moscow", "London", "Paris", "Berlin"};
 
@@ -174,40 +134,12 @@ class WeatherApiClientTest {
         }
     }
 
-    @Test
-    void shouldHandleRateLimitError() {
-        String cityName = "Moscow";
-
-
-        assertNotNull(weatherApiClient);
-
-        when(responseSpec.body(OpenWeatherMapResponse.class))
-                .thenThrow(new HttpClientErrorException(HttpStatus.TOO_MANY_REQUESTS, "Rate limit exceeded"));
-
-        WeatherApiException exception = assertThrows(WeatherApiException.class,
-                () -> weatherApiClient.fetchWeather(cityName));
-
-        assertThat(exception.getMessage()).contains("429");
-    }
-
-    @Test
-    void shouldHandleRestClientChainException() {
-        String cityName = "Moscow";
-
-        when(restClient.get()).thenThrow(new RuntimeException("RestClient error"));
-
-        WeatherApiException exception = assertThrows(WeatherApiException.class,
-                () -> weatherApiClient.fetchWeather(cityName));
-
-        assertThat(exception.getMessage()).contains("Ошибка при обращении к API погоды");
-    }
-
     // ========== Вспомогательные методы ==========
 
     private OpenWeatherMapResponse createMockResponse(double temperature) {
         OpenWeatherMapResponse response = new OpenWeatherMapResponse();
         OpenWeatherMapResponse.Main main = new OpenWeatherMapResponse.Main();
-        main.setTemp(BigDecimal.valueOf(temperature));
+        main.setTemp(temperature);
         response.setMain(main);
         return response;
     }

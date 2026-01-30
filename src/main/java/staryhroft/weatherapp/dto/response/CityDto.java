@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.stereotype.Component;
+import staryhroft.weatherapp.entity.Status;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,35 +16,31 @@ import java.time.LocalDateTime;
 public class CityDto {
     private Long id;
     private String name;
-    private BigDecimal temperature;
-    private Boolean favorite;
+    private Double temperature;
+    private Status status;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updatedAt;
 
-    private LocalDateTime temperatureUpdatedAt;
-
     public CityDto() {
     }
 
-    public CityDto(Long id, String name, BigDecimal temperature, Boolean favorite) {
+    public CityDto(Long id, String name, Double temperature, Status status) {
         this.id = id;
         this.name = name;
         this.temperature = temperature;
-        this.favorite = favorite;
+        this.status = status;
     }
 
-    public CityDto(Long id, String name, BigDecimal temperature,
-                   Boolean favorite, LocalDateTime createdAt, LocalDateTime updatedAt,
-                   LocalDateTime temperatureUpdatedAt) {
+    public CityDto(Long id, String name, Double temperature,
+                   Status status, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.temperature = temperature;
-        this.favorite = favorite;
+        this.status = status;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.temperatureUpdatedAt = temperatureUpdatedAt;
     }
 }
